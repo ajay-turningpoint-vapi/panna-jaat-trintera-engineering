@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Trinetra Engineering — Leading manufacturer of modular office workstations, sheet metal fabrication & custom solutions. ISO 9001 certified. 10-year guarantee. Trusted by Kotak Bank, L&T Finance & more." />
+    <meta name="keywords" content="modular workstation, office furniture manufacturer, sheet metal fabrication, office workstation India, Trinetra Engineering, B2B office furniture" />
+    <meta name="author" content="Trinetra Engineering" />
+    <meta property="og:title" content="Trinetra Engineering — Modular Workstation & Sheet Metal Solutions" />
+    <meta property="og:description" content="Precision-engineered modular office workstations & sheet metal solutions. Built for performance. Delivered with pride." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.trinetraengineering.com" />
+    <title>Trinetra Engineering — Modular Workstation & Sheet Metal Solutions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800&display=swap" rel="stylesheet">
+    <script>
+      window.addEventListener('error', function(e) {
+        var div = document.createElement('div');
+        div.style.position = 'fixed';
+        div.style.top = '0';
+        div.style.left = '0';
+        div.style.width = '100%';
+        div.style.height = '100%';
+        div.style.background = 'red';
+        div.style.color = 'white';
+        div.style.zIndex = '999999';
+        div.style.padding = '20px';
+        div.style.fontFamily = 'monospace';
+        div.style.overflow = 'auto';
+        var stack = e.error && e.error.stack ? e.error.stack : 'No stack trace';
+        div.innerHTML = '<h1>JS Error: ' + e.message + '</h1><pre>' + stack + '</pre>';
+        document.body.appendChild(div);
+      });
+      window.addEventListener('unhandledrejection', function(e) {
+        var div = document.createElement('div');
+        div.style.position = 'fixed';
+        div.style.top = '0';
+        div.style.left = '0';
+        div.style.width = '100%';
+        div.style.height = '100%';
+        div.style.background = 'darkred';
+        div.style.color = 'white';
+        div.style.zIndex = '999999';
+        div.style.padding = '20px';
+        div.style.fontFamily = 'monospace';
+        div.style.overflow = 'auto';
+        var reason = e.reason && e.reason.stack ? e.reason.stack : JSON.stringify(e.reason);
+        div.innerHTML = '<h1>Promise Rejection: ' + reason + '</h1>';
+        document.body.appendChild(div);
+      });
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
