@@ -11,7 +11,6 @@ import { Reveal, SplitText } from "@/components/Reveal";
 import { ContactForm } from "@/components/ContactForm";
 import { CaseStudies } from "@/components/CaseStudies";
 import { SmoothScroll } from "@/components/SmoothScroll";
-import { Configurator } from "@/components/Configurator";
 import { ComparisonMatrix } from "@/components/ComparisonMatrix";
 import { AssetVault } from "@/components/AssetVault";
 import { NumberTicker } from "@/components/ui/NumberTicker";
@@ -83,7 +82,6 @@ export default function Home() {
       <Services />
       <HowWeWork />
       <Products />
-      <Configurator />
       <CaseStudies />
       <ComparisonMatrix />
       <AssetVault />
@@ -163,7 +161,7 @@ function Hero() {
         </svg>
       </div>
 
-      <motion.div style={{ opacity }} className="relative mx-auto max-w-7xl px-6 pb-24 pt-32 w-full">
+      <motion.div style={{ opacity }} className="relative mx-auto max-w-7xl px-6 pb-16 md:pb-24 pt-24 md:pt-32 w-full">
         <div className="grid lg:grid-cols-12 gap-12 items-end">
           <div className="lg:col-span-8">
             <Reveal>
@@ -266,7 +264,7 @@ function ProblemSection() {
   ];
 
   return (
-    <section className="relative py-24 px-6 bg-muted overflow-hidden">
+    <section className="relative py-14 md:py-24 px-6 bg-muted overflow-hidden">
       <div className="absolute inset-0 grid-bg opacity-50 pointer-events-none" />
       <div className="relative mx-auto max-w-7xl grid lg:grid-cols-2 gap-16 items-center">
         <Reveal>
@@ -314,7 +312,7 @@ function ProblemSection() {
 /* ───────── ABOUT ───────── */
 function About() {
   return (
-    <section id="about" className="relative py-32 px-6">
+    <section id="about" className="relative py-16 md:py-32 px-6">
       <div className="absolute inset-0 grid-bg opacity-50 pointer-events-none" />
       <div className="relative mx-auto max-w-7xl grid lg:grid-cols-12 gap-16">
         <div className="lg:col-span-5">
@@ -361,21 +359,35 @@ function About() {
 /* ───────── SERVICES ───────── */
 function Services() {
   return (
-    <section id="services" className="relative py-32 px-6 bg-ink text-white overflow-hidden">
+    <section id="services" className="relative py-16 md:py-32 px-6 bg-ink text-white overflow-hidden">
       <div className="absolute inset-0 blueprint-bg opacity-25" />
       <div className="relative mx-auto max-w-7xl">
-        <div className="flex items-end justify-between flex-wrap gap-6 mb-16">
+        <div className="flex items-end justify-between flex-wrap gap-4 mb-10 md:mb-16">
           <Reveal>
             <div className="text-xs uppercase tracking-[0.4em] text-accent-blue font-semibold">02 — Services</div>
             <h2 className="mt-4 text-5xl md:text-6xl font-bold text-balance max-w-2xl leading-[0.95]">
               Everything under <span className="text-accent-blue">one roof.</span>
             </h2>
           </Reveal>
-          <Reveal delay={0.2} className="max-w-md text-white/60 text-lg">
-            From raw CRCA sheet to installed, powder-coated workstations — fabricated and delivered by one team.
+          <Reveal delay={0.2} className="max-w-md text-white/60 text-base md:text-lg">
+            From raw CRCA sheet to installed workstations — by one team.
           </Reveal>
         </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/10 border border-white/10 rounded-2xl overflow-hidden">
+
+        {/* Mobile: horizontal scroll */}
+        <div className="md:hidden flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 -mx-6 px-6 scrollbar-none">
+          {services.map((s, i) => (
+            <div key={s.title} className="snap-start shrink-0 w-[72vw] max-w-[280px] rounded-2xl border border-white/10 bg-white/5 p-6">
+              <s.icon className="h-8 w-8 text-accent-blue" strokeWidth={1.5} />
+              <h3 className="mt-4 text-base font-bold leading-tight">{s.title}</h3>
+              <p className="mt-2 text-xs text-white/55 leading-relaxed">{s.copy}</p>
+              <div className="mt-6 text-xs tracking-[0.3em] uppercase text-white/20">0{i + 1}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* Desktop: grid */}
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/10 border border-white/10 rounded-2xl overflow-hidden">
           {services.map((s, i) => (
             <Reveal key={s.title} delay={i * 0.07}>
               <div className="group bg-ink p-8 h-full hover:bg-accent-blue/10 transition-colors relative overflow-hidden">
@@ -449,10 +461,23 @@ function HowWeWork() {
         </div>
       </div>
 
-      {/* Steps grid */}
-      <div className="bg-ink text-white px-6 pb-24">
+      {/* Steps */}
+      <div className="bg-ink text-white px-6 pb-16 md:pb-24">
         <div className="mx-auto max-w-7xl">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 rounded-2xl overflow-hidden border border-white/10 -mt-1">
+
+          {/* Mobile: horizontal scroll */}
+          <div className="md:hidden flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 -mx-6 px-6 scrollbar-none -mt-1">
+            {steps.map((s) => (
+              <div key={s.n} className="snap-start shrink-0 w-[72vw] max-w-[280px] rounded-2xl border border-white/10 bg-white/5 p-6">
+                <div className="text-4xl font-bold text-white/10 leading-none mb-4">{s.n}</div>
+                <h3 className="text-base font-bold text-white leading-tight">{s.title}</h3>
+                <p className="mt-2 text-xs text-white/50 leading-relaxed">{s.body}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Desktop: grid */}
+          <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 rounded-2xl overflow-hidden border border-white/10 -mt-1">
             {steps.map((s, i) => (
               <Reveal key={s.n} delay={i * 0.08}>
                 <div className="group bg-ink hover:bg-accent-blue/10 transition-colors p-8 h-full relative overflow-hidden">
@@ -464,14 +489,15 @@ function HowWeWork() {
               </Reveal>
             ))}
           </div>
-          <Reveal delay={0.3} className="mt-8 text-center">
+
+          <div className="mt-8 text-center">
             <a
               href="#contact"
               className="inline-flex items-center gap-2 rounded-full bg-accent-blue text-white px-6 py-3.5 text-sm font-semibold hover:-translate-y-0.5 transition-all shadow-lg shadow-accent-blue/30"
             >
               Start with your requirement <ArrowUpRight className="h-4 w-4" />
             </a>
-          </Reveal>
+          </div>
         </div>
       </div>
     </section>
@@ -481,22 +507,22 @@ function HowWeWork() {
 /* ───────── PRODUCTS ───────── */
 function Products() {
   return (
-    <section id="products" className="relative py-32 px-6">
+    <section id="products" className="relative py-16 md:py-32 px-6">
       <div className="mx-auto max-w-7xl">
-        <div className="flex items-end justify-between flex-wrap gap-6 mb-16">
+        <div className="flex items-end justify-between flex-wrap gap-4 mb-8 md:mb-16">
           <Reveal>
             <div className="text-xs uppercase tracking-[0.4em] text-accent-blue font-semibold">04 — Products</div>
             <h2 className="mt-4 text-5xl md:text-6xl font-bold text-balance max-w-3xl leading-[0.95]">
               A modular system for <span className="text-accent-blue">every workplace.</span>
             </h2>
           </Reveal>
-          <Reveal delay={0.15} className="max-w-md text-steel text-lg">
+          <Reveal delay={0.15} className="max-w-md text-steel text-base md:text-lg hidden md:block">
             From bench workstations to boardroom tables — all manufactured in CRCA powder coated steel.
           </Reveal>
         </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {products.map((p, i) => (
-            <Reveal key={p.code} delay={(i % 3) * 0.08}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 md:gap-6">
+          {products.slice(0, 4).map((p, i) => (
+            <Reveal key={p.code} delay={(i % 2) * 0.08}>
               <Link
                 to={`/products/${p.slug}`}
                 className="group relative rounded-2xl overflow-hidden bg-white border border-border hover:border-accent-blue transition-all hover:shadow-xl hover:shadow-accent-blue/5 h-full block"
@@ -513,10 +539,10 @@ function Products() {
                     {p.code}
                   </div>
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-ink">{p.name}</h3>
+                <div className="p-5 md:p-6">
+                  <h3 className="text-lg md:text-xl font-bold text-ink">{p.name}</h3>
                   <p className="mt-2 text-sm text-steel line-clamp-2 leading-relaxed">{p.tagline}</p>
-                  <ul className="mt-4 space-y-2">
+                  <ul className="mt-3 md:mt-4 space-y-1.5 md:space-y-2">
                     {p.specs.slice(0, 3).map((s) => (
                       <li key={s.label} className="flex gap-2 text-sm text-steel">
                         <ChevronRight className="h-4 w-4 text-accent-blue shrink-0 mt-0.5" />
@@ -524,7 +550,7 @@ function Products() {
                       </li>
                     ))}
                   </ul>
-                  <div className="mt-5 inline-flex items-center gap-1 text-xs font-bold uppercase tracking-widest text-accent-blue group-hover:gap-2 transition-all">
+                  <div className="mt-4 md:mt-5 inline-flex items-center gap-1 text-xs font-bold uppercase tracking-widest text-accent-blue group-hover:gap-2 transition-all">
                     View details <ArrowUpRight className="h-3.5 w-3.5" />
                   </div>
                 </div>
@@ -533,6 +559,16 @@ function Products() {
             </Reveal>
           ))}
         </div>
+
+        {/* View all */}
+        <Reveal delay={0.2} className="mt-10 text-center">
+          <Link
+            to="/products"
+            className="inline-flex items-center gap-2 rounded-full bg-ink text-white px-8 py-4 text-sm font-semibold hover:bg-accent-blue transition-colors shadow-lg"
+          >
+            View All {products.length} Products <ArrowUpRight className="h-4 w-4" />
+          </Link>
+        </Reveal>
       </div>
     </section>
   );
@@ -541,14 +577,14 @@ function Products() {
 /* ───────── PROJECTS ───────── */
 function Projects() {
   return (
-    <section id="projects" className="py-32 px-6 bg-ink text-white overflow-hidden">
+    <section id="projects" className="py-16 md:py-32 px-6 bg-ink text-white overflow-hidden">
       <div className="mx-auto max-w-7xl">
         <Reveal>
           <div className="text-xs uppercase tracking-[0.4em] text-accent-blue font-semibold">09 — Completed Projects</div>
           <h2 className="mt-4 text-5xl md:text-6xl font-bold leading-[0.95] max-w-3xl">
             Trusted across <span className="text-accent-blue">India.</span>
           </h2>
-          <p className="mt-6 text-lg text-white/60 max-w-xl">
+          <p className="mt-4 text-base md:text-lg text-white/60 max-w-xl hidden md:block">
             From hospitality to banking to tech — Trinetra workstations are in production across India's most demanding workplaces.
           </p>
         </Reveal>
@@ -561,7 +597,7 @@ function Projects() {
                     {String(i + 1).padStart(2, "0")}
                   </div>
                   <div>
-                    <div className="text-2xl md:text-4xl font-bold tracking-tight group-hover:text-accent-blue transition-colors">
+                    <div className="text-lg md:text-4xl font-bold tracking-tight group-hover:text-accent-blue transition-colors">
                       {p.name}
                     </div>
                     <div className="text-sm text-white/45 mt-0.5">{p.city}</div>
@@ -580,7 +616,7 @@ function Projects() {
 /* ───────── CONTACT ───────── */
 function Contact() {
   return (
-    <section id="contact" className="relative py-32 px-6 overflow-hidden">
+    <section id="contact" className="relative py-16 md:py-32 px-6 overflow-hidden">
       <div className="absolute inset-0 grid-bg opacity-50 pointer-events-none" />
       <div className="relative mx-auto max-w-7xl grid lg:grid-cols-12 gap-12">
         <div className="lg:col-span-5">

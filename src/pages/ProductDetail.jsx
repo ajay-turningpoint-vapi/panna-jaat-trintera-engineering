@@ -170,7 +170,7 @@ export default function ProductDetail() {
           <div className="lg:col-span-4">
             <Reveal>
               <div className="text-xs uppercase tracking-[0.4em] text-accent-blue font-semibold">Why this product</div>
-              <h2 className="mt-3 text-3xl md:text-4xl font-bold leading-tight">Key benefits</h2>
+              <h2 className="mt-3 text-xl md:text-2xl font-bold leading-tight">Key benefits</h2>
             </Reveal>
           </div>
           <div className="lg:col-span-8 space-y-4">
@@ -214,7 +214,7 @@ export default function ProductDetail() {
           <div className="lg:col-span-4">
             <Reveal>
               <div className="text-xs uppercase tracking-[0.4em] text-accent-blue font-semibold">Technical</div>
-              <h2 className="mt-3 text-3xl md:text-4xl font-bold leading-tight">Specifications</h2>
+              <h2 className="mt-3 text-xl md:text-2xl font-bold leading-tight">Specifications</h2>
               <p className="mt-4 text-sm text-steel">All dimensions are customizable. Tolerances per IS 513.</p>
             </Reveal>
           </div>
@@ -247,7 +247,7 @@ export default function ProductDetail() {
           <Reveal>
             <div className="text-center max-w-2xl mx-auto mb-12">
               <div className="text-xs uppercase tracking-[0.4em] text-accent-blue font-bold">The Deployment Package</div>
-              <h2 className="mt-3 text-3xl md:text-4xl font-bold leading-tight text-ink">What's Included in Your Project</h2>
+              <h2 className="mt-3 text-xl md:text-2xl font-bold leading-tight text-ink">What's Included in Your Project</h2>
               <p className="mt-3 text-sm text-steel">When you source modular workstations direct from Trinetra, you don't just buy steel and wood. You get the complete enterprise-ready deployment package.</p>
             </div>
           </Reveal>
@@ -301,7 +301,7 @@ export default function ProductDetail() {
           <Reveal>
             <div className="text-center mb-10">
               <div className="text-xs uppercase tracking-[0.4em] text-accent-blue font-bold">Quality You Can Trust</div>
-              <h2 className="mt-3 text-3xl md:text-4xl font-bold leading-tight text-ink">Certified & Guaranteed</h2>
+              <h2 className="mt-3 text-xl md:text-2xl font-bold leading-tight text-ink">Certified & Guaranteed</h2>
               <p className="mt-3 text-sm text-steel max-w-xl mx-auto">Every workstation we ship meets stringent quality benchmarks — backed by certifications and a decade-long guarantee.</p>
             </div>
           </Reveal>
@@ -430,7 +430,7 @@ export default function ProductDetail() {
       <section className="py-20 px-6 bg-ink text-white">
         <div className="mx-auto max-w-7xl">
           <Reveal>
-            <h2 className="text-3xl md:text-4xl font-bold">Also consider</h2>
+            <h2 className="text-xl md:text-2xl font-bold">Also consider</h2>
           </Reveal>
           <div className="mt-10 grid md:grid-cols-3 gap-6">
             {related.map((r) => (
