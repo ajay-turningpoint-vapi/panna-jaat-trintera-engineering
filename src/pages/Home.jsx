@@ -1,10 +1,28 @@
 import { Link } from "react-router-dom";
-import { motion, useScroll, useTransform, useSpring, useReducedMotion } from "framer-motion";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useSpring,
+  useReducedMotion,
+} from "framer-motion";
 import { useRef } from "react";
 import {
-  ArrowUpRight, ShieldCheck, Settings2, Wrench, Hammer,
-  Cog, Paintbrush, Phone, Mail, MapPin, ChevronRight, CheckCircle2,
-  Building2, Factory, Layers,
+  ArrowUpRight,
+  ShieldCheck,
+  Settings2,
+  Wrench,
+  Hammer,
+  Cog,
+  Paintbrush,
+  Phone,
+  Mail,
+  MapPin,
+  ChevronRight,
+  CheckCircle2,
+  Building2,
+  Factory,
+  Layers,
 } from "lucide-react";
 import { Logo } from "@/components/Logo";
 import { Reveal, SplitText } from "@/components/Reveal";
@@ -15,6 +33,7 @@ import { ComparisonMatrix } from "@/components/ComparisonMatrix";
 import { AssetVault } from "@/components/AssetVault";
 import { NumberTicker } from "@/components/ui/NumberTicker";
 import { AnimatedGradientText } from "@/components/ui/AnimatedGradientText";
+import DynamicWaves from "@/components/ui/DynamicWaves";
 import { products } from "@/lib/products";
 
 const services = [
@@ -76,6 +95,7 @@ export default function Home() {
       <SmoothScroll />
       <Nav />
       <Hero />
+      <WaveDivider />
       <TrustBar />
       <ProblemSection />
       <About />
@@ -95,21 +115,55 @@ export default function Home() {
 /* ───────── NAV ───────── */
 function Nav() {
   const { scrollY } = useScroll();
-  const bg = useTransform(scrollY, [0, 80], ["rgba(255,255,255,0)", "rgba(255,255,255,0.95)"]);
-  const border = useTransform(scrollY, [0, 80], ["rgba(0,0,0,0)", "rgba(0,0,0,0.08)"]);
+  const bg = useTransform(
+    scrollY,
+    [0, 80],
+    ["rgba(255,255,255,0)", "rgba(255,255,255,0.95)"],
+  );
+  const border = useTransform(
+    scrollY,
+    [0, 80],
+    ["rgba(0,0,0,0)", "rgba(0,0,0,0.08)"],
+  );
   return (
     <motion.header
-      style={{ backgroundColor: bg, borderColor: border, backdropFilter: "blur(14px)" }}
+      style={{
+        backgroundColor: bg,
+        borderColor: border,
+        backdropFilter: "blur(14px)",
+      }}
       className="fixed top-0 inset-x-0 z-50 border-b"
     >
       <div className="mx-auto max-w-7xl px-6 h-16 flex items-center justify-between">
         <Logo />
         <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-ink/75">
-          <a href="#about" className="hover:text-accent-blue transition-colors">About</a>
-          <a href="#services" className="hover:text-accent-blue transition-colors">Services</a>
-          <a href="#products" className="hover:text-accent-blue transition-colors">Products</a>
-          <a href="#projects" className="hover:text-accent-blue transition-colors">Projects</a>
-          <a href="#contact" className="hover:text-accent-blue transition-colors">Contact</a>
+          <a href="#about" className="hover:text-accent-blue transition-colors">
+            About
+          </a>
+          <a
+            href="#services"
+            className="hover:text-accent-blue transition-colors"
+          >
+            Services
+          </a>
+          <a
+            href="#products"
+            className="hover:text-accent-blue transition-colors"
+          >
+            Products
+          </a>
+          <a
+            href="#projects"
+            className="hover:text-accent-blue transition-colors"
+          >
+            Projects
+          </a>
+          <a
+            href="#contact"
+            className="hover:text-accent-blue transition-colors"
+          >
+            Contact
+          </a>
         </nav>
         <a
           href="#contact"
@@ -126,14 +180,20 @@ function Nav() {
 function Hero() {
   const ref = useRef(null);
   const reduce = useReducedMotion();
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
   const yRaw = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : 220]);
   const y = useSpring(yRaw, { stiffness: 100, damping: 30 });
   const scale = useTransform(scrollYProgress, [0, 1], [1, reduce ? 1 : 1.12]);
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, reduce ? 1 : 0]);
 
   return (
-    <section ref={ref} className="relative min-h-[100svh] flex items-end overflow-hidden bg-ink text-white">
+    <section
+      ref={ref}
+      className="relative min-h-[100svh] flex items-end overflow-hidden bg-ink text-white"
+    >
       <motion.div style={{ scale, y }} className="absolute inset-0">
         <img
           src="/hero.jpg"
@@ -149,19 +209,38 @@ function Hero() {
 
       {/* Chevron accent */}
       <div className="absolute right-0 top-0 h-full w-1/2 pointer-events-none">
-        <svg viewBox="0 0 600 800" className="h-full w-full" preserveAspectRatio="none">
+        <svg
+          viewBox="0 0 600 800"
+          className="h-full w-full"
+          preserveAspectRatio="none"
+        >
           <defs>
             <linearGradient id="cv" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stopColor="var(--accent-blue)" stopOpacity="0.0" />
-              <stop offset="1" stopColor="var(--accent-blue)" stopOpacity="0.5" />
+              <stop
+                offset="0"
+                stopColor="var(--accent-blue)"
+                stopOpacity="0.0"
+              />
+              <stop
+                offset="1"
+                stopColor="var(--accent-blue)"
+                stopOpacity="0.5"
+              />
             </linearGradient>
           </defs>
           <path d="M150 0 L600 0 L600 800 L300 800 Z" fill="url(#cv)" />
-          <path d="M150 0 L155 0 L305 800 L300 800 Z" fill="var(--accent-blue)" opacity="0.85" />
+          <path
+            d="M150 0 L155 0 L305 800 L300 800 Z"
+            fill="var(--accent-blue)"
+            opacity="0.85"
+          />
         </svg>
       </div>
 
-      <motion.div style={{ opacity }} className="relative mx-auto max-w-7xl px-6 pb-16 md:pb-24 pt-24 md:pt-32 w-full">
+      <motion.div
+        style={{ opacity }}
+        className="relative mx-auto max-w-7xl px-6 pb-16 md:pb-24 pt-24 md:pt-32 w-full"
+      >
         <div className="grid lg:grid-cols-12 gap-12 items-end">
           <div className="lg:col-span-8">
             <Reveal>
@@ -175,19 +254,31 @@ function Hero() {
             <h1 className="text-[clamp(2.8rem,7vw,5.8rem)] leading-[0.93] font-bold text-balance">
               <SplitText text="Your Office Floor," />
               <br />
-              <span className="text-accent-blue"><SplitText text="Engineered Direct." /></span>
+              <span className="text-accent-blue">
+                <SplitText text="Engineered Direct." />
+              </span>
             </h1>
 
             {/* AIDA - Interest: Who they are + what they do */}
-            <Reveal delay={0.35} className="mt-8 max-w-2xl text-lg text-white/70 leading-relaxed">
-              Trinetra Engineering manufactures <strong className="text-white">modular workstations</strong> and{" "}
-              <strong className="text-white">sheet metal solutions</strong> for India's most demanding offices —
-              customised to your layout, powder-coated to your finish, and delivered directly from our Vasai factory.
+            <Reveal
+              delay={0.35}
+              className="mt-8 max-w-2xl text-lg text-white/70 leading-relaxed"
+            >
+              Trinetra Engineering manufactures{" "}
+              <strong className="text-white">modular workstations</strong> and{" "}
+              <strong className="text-white">sheet metal solutions</strong> for
+              India's most demanding offices — customised to your layout,
+              powder-coated to your finish, and delivered directly from our
+              Vasai factory.
             </Reveal>
 
             {/* AIDA - Desire: Social proof inline */}
             <Reveal delay={0.45} className="mt-4 text-sm text-white/50">
-              Trusted by <span className="text-white/80">Kotak Bank · L&T Finance · Magnus Hotel</span> and 5 more marquee clients.
+              Trusted by{" "}
+              <span className="text-white/80">
+                Kotak Bank · L&T Finance · Magnus Hotel
+              </span>{" "}
+              and 5 more marquee clients.
             </Reveal>
 
             {/* AIDA - Action: CTAs */}
@@ -216,7 +307,9 @@ function Hero() {
                     <div className="text-3xl font-bold text-white tabular-nums">
                       <NumberTicker value={value} suffix={suffix} />
                     </div>
-                    <div className="text-xs uppercase tracking-widest text-white/55 mt-1">{label}</div>
+                    <div className="text-xs uppercase tracking-widest text-white/55 mt-1">
+                      {label}
+                    </div>
                   </div>
                 ))}
               </div>
@@ -232,21 +325,55 @@ function Hero() {
   );
 }
 
+/* ───────── WAVE DIVIDER ───────── */
+function WaveDivider() {
+  return (
+    <div className="relative -mb-px">
+      <DynamicWaves
+        height={120}
+        color="#1a1a1a"
+        opacity={0.3}
+        amplitude={30}
+        speed={0.04}
+        waveCount={2}
+      />
+    </div>
+  );
+}
+
 /* ───────── TRUST BAR (Marquee) ───────── */
 function TrustBar() {
   const items = [
-    "Modular Workstations", "◆", "Sheet Metal Fabrication", "◆",
-    "Custom Design", "◆", "CRCA Powder Coated", "◆",
-    "Welding & Assembly", "◆", "Powder Coating", "◆",
-    "Wire Management", "◆", "Made in India", "◆",
-    "Vasai East Factory", "◆", "4+ Years Excellence", "◆",
+    "Modular Workstations",
+    "◆",
+    "Sheet Metal Fabrication",
+    "◆",
+    "Custom Design",
+    "◆",
+    "CRCA Powder Coated",
+    "◆",
+    "Welding & Assembly",
+    "◆",
+    "Powder Coating",
+    "◆",
+    "Wire Management",
+    "◆",
+    "Made in India",
+    "◆",
+    "Vasai East Factory",
+    "◆",
+    "4+ Years Excellence",
+    "◆",
   ];
   const row = [...items, ...items, ...items];
   return (
     <section className="border-y border-border bg-ink text-white overflow-hidden py-5">
       <div className="flex marquee whitespace-nowrap">
         {row.map((t, i) => (
-          <span key={i} className="text-xl font-semibold tracking-tight px-5 text-white/75">
+          <span
+            key={i}
+            className="text-xl font-semibold tracking-tight px-5 text-white/75"
+          >
             {t === "◆" ? <span className="text-accent-blue">◆</span> : t}
           </span>
         ))}
@@ -268,14 +395,19 @@ function ProblemSection() {
       <div className="absolute inset-0 grid-bg opacity-50 pointer-events-none" />
       <div className="relative mx-auto max-w-7xl grid lg:grid-cols-2 gap-16 items-center">
         <Reveal>
-          <div className="text-xs uppercase tracking-[0.4em] text-accent-blue font-semibold">The Problem</div>
+          <div className="text-xs uppercase tracking-[0.4em] text-accent-blue font-semibold">
+            The Problem
+          </div>
           <h2 className="mt-4 text-4xl md:text-5xl font-bold leading-[1.0] text-balance">
             Planning an office fit-out?{" "}
-            <span className="text-accent-blue">Here's what slows most projects down.</span>
+            <span className="text-accent-blue">
+              Here's what slows most projects down.
+            </span>
           </h2>
           <p className="mt-6 text-base text-steel leading-relaxed">
-            Most procurement teams face the same three obstacles when sourcing office workstations for a fit-out.
-            Trinetra Engineering is built to eliminate all three.
+            Most procurement teams face the same three obstacles when sourcing
+            office workstations for a fit-out. Trinetra Engineering is built to
+            eliminate all three.
           </p>
         </Reveal>
 
@@ -284,7 +416,9 @@ function ProblemSection() {
             <Reveal key={i} delay={i * 0.1}>
               <div className="flex gap-4 rounded-2xl border border-border bg-white p-5">
                 <div className="h-8 w-8 rounded-full bg-red-50 border border-red-100 flex items-center justify-center shrink-0 mt-0.5">
-                  <span className="text-xs font-bold text-red-500">{i + 1}</span>
+                  <span className="text-xs font-bold text-red-500">
+                    {i + 1}
+                  </span>
                 </div>
                 <p className="text-sm text-steel leading-relaxed">{p}</p>
               </div>
@@ -296,9 +430,12 @@ function ProblemSection() {
             <div className="flex gap-4 rounded-2xl border-2 border-accent-blue bg-accent-blue/5 p-5 mt-6">
               <ShieldCheck className="h-6 w-6 text-accent-blue shrink-0 mt-0.5" />
               <div>
-                <div className="text-sm font-bold text-ink">The Trinetra Solution</div>
+                <div className="text-sm font-bold text-ink">
+                  The Trinetra Solution
+                </div>
                 <p className="text-sm text-steel mt-1 leading-relaxed">
-                  One factory. One team. Your layout, your finish, your timeline — manufactured and delivered direct from Vasai East.
+                  One factory. One team. Your layout, your finish, your timeline
+                  — manufactured and delivered direct from Vasai East.
                 </p>
               </div>
             </div>
@@ -317,35 +454,47 @@ function About() {
       <div className="relative mx-auto max-w-7xl grid lg:grid-cols-12 gap-16">
         <div className="lg:col-span-5">
           <Reveal>
-            <div className="text-xs uppercase tracking-[0.4em] text-accent-blue font-semibold">01 — About Us</div>
+            <div className="text-xs uppercase tracking-[0.4em] text-accent-blue font-semibold">
+              01 — About Us
+            </div>
             <h2 className="mt-4 text-5xl md:text-6xl font-bold text-balance leading-[0.95]">
               A trusted name in{" "}
-              <AnimatedGradientText>sheet metal</AnimatedGradientText>{" "}
-              for 4+ years.
+              <AnimatedGradientText>sheet metal</AnimatedGradientText> for 4+
+              years.
             </h2>
           </Reveal>
         </div>
         <div className="lg:col-span-7 space-y-6">
           <Reveal delay={0.1}>
             <p className="text-lg text-steel leading-relaxed">
-              Trinetra Engineering is a trusted name in the sheet metal industry. Backed by strong technical expertise
-              and hands-on experience, we deliver{" "}
-              <strong className="text-ink">customised solutions tailored to industrial needs.</strong>
+              Trinetra Engineering is a trusted name in the sheet metal
+              industry. Backed by strong technical expertise and hands-on
+              experience, we deliver{" "}
+              <strong className="text-ink">
+                customised solutions tailored to industrial needs.
+              </strong>
             </p>
           </Reveal>
           <Reveal delay={0.2}>
             <p className="text-lg text-steel leading-relaxed">
-              With over <strong className="text-ink">4+ years of excellence</strong>, we specialise in manufacturing
-              high-quality Modular Workstations, Sheet Metal Components and Custom Fabrication solutions — committed
-              to durability, precision and customer satisfaction.
+              With over{" "}
+              <strong className="text-ink">4+ years of excellence</strong>, we
+              specialise in manufacturing high-quality Modular Workstations,
+              Sheet Metal Components and Custom Fabrication solutions —
+              committed to durability, precision and customer satisfaction.
             </p>
           </Reveal>
           <Reveal delay={0.3}>
             <div className="grid sm:grid-cols-2 gap-3 pt-4">
               {focuses.map(({ icon: Icon, label }) => (
-                <div key={label} className="flex items-center gap-3 rounded-xl border border-border bg-white px-4 py-3.5">
+                <div
+                  key={label}
+                  className="flex items-center gap-3 rounded-xl border border-border bg-white px-4 py-3.5"
+                >
                   <Icon className="h-4 w-4 text-accent-blue shrink-0" />
-                  <span className="text-sm font-semibold text-ink">{label}</span>
+                  <span className="text-sm font-semibold text-ink">
+                    {label}
+                  </span>
                 </div>
               ))}
             </div>
@@ -359,17 +508,26 @@ function About() {
 /* ───────── SERVICES ───────── */
 function Services() {
   return (
-    <section id="services" className="relative py-16 md:py-32 px-6 bg-ink text-white overflow-hidden">
+    <section
+      id="services"
+      className="relative py-16 md:py-32 px-6 bg-ink text-white overflow-hidden"
+    >
       <div className="absolute inset-0 blueprint-bg opacity-25" />
       <div className="relative mx-auto max-w-7xl">
         <div className="flex items-end justify-between flex-wrap gap-4 mb-10 md:mb-16">
           <Reveal>
-            <div className="text-xs uppercase tracking-[0.4em] text-accent-blue font-semibold">02 — Services</div>
+            <div className="text-xs uppercase tracking-[0.4em] text-accent-blue font-semibold">
+              02 — Services
+            </div>
             <h2 className="mt-4 text-5xl md:text-6xl font-bold text-balance max-w-2xl leading-[0.95]">
-              Everything under <span className="text-accent-blue">one roof.</span>
+              Everything under{" "}
+              <span className="text-accent-blue">one roof.</span>
             </h2>
           </Reveal>
-          <Reveal delay={0.2} className="max-w-md text-white/60 text-base md:text-lg">
+          <Reveal
+            delay={0.2}
+            className="max-w-md text-white/60 text-base md:text-lg"
+          >
             From raw CRCA sheet to installed workstations — by one team.
           </Reveal>
         </div>
@@ -377,11 +535,20 @@ function Services() {
         {/* Mobile: horizontal scroll */}
         <div className="md:hidden flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 -mx-6 px-6 scrollbar-none">
           {services.map((s, i) => (
-            <div key={s.title} className="snap-start shrink-0 w-[72vw] max-w-[280px] rounded-2xl border border-white/10 bg-white/5 p-6">
+            <div
+              key={s.title}
+              className="snap-start shrink-0 w-[72vw] max-w-[280px] rounded-2xl border border-white/10 bg-white/5 p-6"
+            >
               <s.icon className="h-8 w-8 text-accent-blue" strokeWidth={1.5} />
-              <h3 className="mt-4 text-base font-bold leading-tight">{s.title}</h3>
-              <p className="mt-2 text-xs text-white/55 leading-relaxed">{s.copy}</p>
-              <div className="mt-6 text-xs tracking-[0.3em] uppercase text-white/20">0{i + 1}</div>
+              <h3 className="mt-4 text-base font-bold leading-tight">
+                {s.title}
+              </h3>
+              <p className="mt-2 text-xs text-white/55 leading-relaxed">
+                {s.copy}
+              </p>
+              <div className="mt-6 text-xs tracking-[0.3em] uppercase text-white/20">
+                0{i + 1}
+              </div>
             </div>
           ))}
         </div>
@@ -392,10 +559,19 @@ function Services() {
             <Reveal key={s.title} delay={i * 0.07}>
               <div className="group bg-ink p-8 h-full hover:bg-accent-blue/10 transition-colors relative overflow-hidden">
                 <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-accent-blue/0 group-hover:bg-accent-blue/15 blur-2xl transition-colors" />
-                <s.icon className="h-10 w-10 text-accent-blue" strokeWidth={1.5} />
-                <h3 className="mt-6 text-xl font-bold leading-tight">{s.title}</h3>
-                <p className="mt-3 text-sm text-white/60 leading-relaxed">{s.copy}</p>
-                <div className="mt-8 text-xs tracking-[0.3em] uppercase text-white/25">0{i + 1}</div>
+                <s.icon
+                  className="h-10 w-10 text-accent-blue"
+                  strokeWidth={1.5}
+                />
+                <h3 className="mt-6 text-xl font-bold leading-tight">
+                  {s.title}
+                </h3>
+                <p className="mt-3 text-sm text-white/60 leading-relaxed">
+                  {s.copy}
+                </p>
+                <div className="mt-8 text-xs tracking-[0.3em] uppercase text-white/25">
+                  0{i + 1}
+                </div>
               </div>
             </Reveal>
           ))}
@@ -436,26 +612,49 @@ const steps = [
 function HowWeWork() {
   const ref = useRef(null);
   const reduce = useReducedMotion();
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-  const y = useTransform(scrollYProgress, [0, 1], reduce ? ["0%", "0%"] : ["-12%", "12%"]);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+  const y = useTransform(
+    scrollYProgress,
+    [0, 1],
+    reduce ? ["0%", "0%"] : ["-12%", "12%"],
+  );
 
   return (
     <section className="relative overflow-hidden">
       {/* Parallax fab image */}
-      <div ref={ref} className="relative h-[420px] md:h-[500px] overflow-hidden">
-        <motion.div style={{ y }} className="absolute inset-0 -top-[12%] -bottom-[12%]">
-          <img src="/fab.jpg" alt="Sheet metal fabrication at Trinetra Engineering" className="h-full w-full object-cover" loading="lazy" decoding="async" />
+      <div
+        ref={ref}
+        className="relative h-[420px] md:h-[500px] overflow-hidden"
+      >
+        <motion.div
+          style={{ y }}
+          className="absolute inset-0 -top-[12%] -bottom-[12%]"
+        >
+          <img
+            src="/fab.jpg"
+            alt="Sheet metal fabrication at Trinetra Engineering"
+            className="h-full w-full object-cover"
+            loading="lazy"
+            decoding="async"
+          />
           <div className="absolute inset-0 bg-gradient-to-b from-ink/80 via-ink/50 to-ink" />
         </motion.div>
         <div className="relative h-full flex items-center mx-auto max-w-7xl px-6">
           <Reveal>
-            <div className="text-xs uppercase tracking-[0.4em] text-accent-blue font-semibold">03 — How We Work</div>
+            <div className="text-xs uppercase tracking-[0.4em] text-accent-blue font-semibold">
+              03 — How We Work
+            </div>
             <h2 className="mt-4 text-4xl md:text-6xl font-bold text-white leading-[0.95]">
-              From requirement<br />
+              From requirement
+              <br />
               <span className="text-accent-blue">to installed workspace.</span>
             </h2>
             <p className="mt-5 text-lg text-white/65 max-w-lg">
-              A straightforward four-step process — from the moment you contact us to the day your team moves in.
+              A straightforward four-step process — from the moment you contact
+              us to the day your team moves in.
             </p>
           </Reveal>
         </div>
@@ -464,14 +663,22 @@ function HowWeWork() {
       {/* Steps */}
       <div className="bg-ink text-white px-6 pb-16 md:pb-24">
         <div className="mx-auto max-w-7xl">
-
           {/* Mobile: horizontal scroll */}
           <div className="md:hidden flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 -mx-6 px-6 scrollbar-none -mt-1">
             {steps.map((s) => (
-              <div key={s.n} className="snap-start shrink-0 w-[72vw] max-w-[280px] rounded-2xl border border-white/10 bg-white/5 p-6">
-                <div className="text-4xl font-bold text-white/10 leading-none mb-4">{s.n}</div>
-                <h3 className="text-base font-bold text-white leading-tight">{s.title}</h3>
-                <p className="mt-2 text-xs text-white/50 leading-relaxed">{s.body}</p>
+              <div
+                key={s.n}
+                className="snap-start shrink-0 w-[72vw] max-w-[280px] rounded-2xl border border-white/10 bg-white/5 p-6"
+              >
+                <div className="text-4xl font-bold text-white/10 leading-none mb-4">
+                  {s.n}
+                </div>
+                <h3 className="text-base font-bold text-white leading-tight">
+                  {s.title}
+                </h3>
+                <p className="mt-2 text-xs text-white/50 leading-relaxed">
+                  {s.body}
+                </p>
               </div>
             ))}
           </div>
@@ -482,9 +689,15 @@ function HowWeWork() {
               <Reveal key={s.n} delay={i * 0.08}>
                 <div className="group bg-ink hover:bg-accent-blue/10 transition-colors p-8 h-full relative overflow-hidden">
                   <div className="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-accent-blue/0 group-hover:bg-accent-blue/15 blur-2xl transition-colors" />
-                  <div className="text-5xl font-bold text-white/8 leading-none mb-6 group-hover:text-white/12 transition-colors">{s.n}</div>
-                  <h3 className="text-lg font-bold text-white leading-tight">{s.title}</h3>
-                  <p className="mt-3 text-sm text-white/55 leading-relaxed">{s.body}</p>
+                  <div className="text-5xl font-bold text-white/8 leading-none mb-6 group-hover:text-white/12 transition-colors">
+                    {s.n}
+                  </div>
+                  <h3 className="text-lg font-bold text-white leading-tight">
+                    {s.title}
+                  </h3>
+                  <p className="mt-3 text-sm text-white/55 leading-relaxed">
+                    {s.body}
+                  </p>
                 </div>
               </Reveal>
             ))}
@@ -511,13 +724,20 @@ function Products() {
       <div className="mx-auto max-w-7xl">
         <div className="flex items-end justify-between flex-wrap gap-4 mb-8 md:mb-16">
           <Reveal>
-            <div className="text-xs uppercase tracking-[0.4em] text-accent-blue font-semibold">04 — Products</div>
+            <div className="text-xs uppercase tracking-[0.4em] text-accent-blue font-semibold">
+              04 — Products
+            </div>
             <h2 className="mt-4 text-5xl md:text-6xl font-bold text-balance max-w-3xl leading-[0.95]">
-              A modular system for <span className="text-accent-blue">every workplace.</span>
+              A modular system for{" "}
+              <span className="text-accent-blue">every workplace.</span>
             </h2>
           </Reveal>
-          <Reveal delay={0.15} className="max-w-md text-steel text-base md:text-lg hidden md:block">
-            From bench workstations to boardroom tables — all manufactured in CRCA powder coated steel.
+          <Reveal
+            delay={0.15}
+            className="max-w-md text-steel text-base md:text-lg hidden md:block"
+          >
+            From bench workstations to boardroom tables — all manufactured in
+            CRCA powder coated steel.
           </Reveal>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 md:gap-6">
@@ -540,13 +760,25 @@ function Products() {
                   </div>
                 </div>
                 <div className="p-5 md:p-6">
-                  <h3 className="text-lg md:text-xl font-bold text-ink">{p.name}</h3>
-                  <p className="mt-2 text-sm text-steel line-clamp-2 leading-relaxed">{p.tagline}</p>
+                  <h3 className="text-lg md:text-xl font-bold text-ink">
+                    {p.name}
+                  </h3>
+                  <p className="mt-2 text-sm text-steel line-clamp-2 leading-relaxed">
+                    {p.tagline}
+                  </p>
                   <ul className="mt-3 md:mt-4 space-y-1.5 md:space-y-2">
                     {p.specs.slice(0, 3).map((s) => (
-                      <li key={s.label} className="flex gap-2 text-sm text-steel">
+                      <li
+                        key={s.label}
+                        className="flex gap-2 text-sm text-steel"
+                      >
                         <ChevronRight className="h-4 w-4 text-accent-blue shrink-0 mt-0.5" />
-                        <span><strong className="text-ink font-semibold">{s.label}:</strong> {s.value}</span>
+                        <span>
+                          <strong className="text-ink font-semibold">
+                            {s.label}:
+                          </strong>{" "}
+                          {s.value}
+                        </span>
                       </li>
                     ))}
                   </ul>
@@ -566,7 +798,8 @@ function Products() {
             to="/products"
             className="inline-flex items-center gap-2 rounded-full bg-ink text-white px-8 py-4 text-sm font-semibold hover:bg-accent-blue transition-colors shadow-lg"
           >
-            View All {products.length} Products <ArrowUpRight className="h-4 w-4" />
+            View All {products.length} Products{" "}
+            <ArrowUpRight className="h-4 w-4" />
           </Link>
         </Reveal>
       </div>
@@ -577,15 +810,21 @@ function Products() {
 /* ───────── PROJECTS ───────── */
 function Projects() {
   return (
-    <section id="projects" className="py-16 md:py-32 px-6 bg-ink text-white overflow-hidden">
+    <section
+      id="projects"
+      className="py-16 md:py-32 px-6 bg-ink text-white overflow-hidden"
+    >
       <div className="mx-auto max-w-7xl">
         <Reveal>
-          <div className="text-xs uppercase tracking-[0.4em] text-accent-blue font-semibold">09 — Completed Projects</div>
+          <div className="text-xs uppercase tracking-[0.4em] text-accent-blue font-semibold">
+            09 — Completed Projects
+          </div>
           <h2 className="mt-4 text-5xl md:text-6xl font-bold leading-[0.95] max-w-3xl">
             Trusted across <span className="text-accent-blue">India.</span>
           </h2>
           <p className="mt-4 text-base md:text-lg text-white/60 max-w-xl hidden md:block">
-            From hospitality to banking to tech — Trinetra workstations are in production across India's most demanding workplaces.
+            From hospitality to banking to tech — Trinetra workstations are in
+            production across India's most demanding workplaces.
           </p>
         </Reveal>
         <div className="mt-16 border-t border-white/10">
@@ -616,18 +855,26 @@ function Projects() {
 /* ───────── CONTACT ───────── */
 function Contact() {
   return (
-    <section id="contact" className="relative py-16 md:py-32 px-6 overflow-hidden">
+    <section
+      id="contact"
+      className="relative py-16 md:py-32 px-6 overflow-hidden"
+    >
       <div className="absolute inset-0 grid-bg opacity-50 pointer-events-none" />
       <div className="relative mx-auto max-w-7xl grid lg:grid-cols-12 gap-12">
         <div className="lg:col-span-5">
           <Reveal>
-            <div className="text-xs uppercase tracking-[0.4em] text-accent-blue font-semibold">10 — Contact</div>
+            <div className="text-xs uppercase tracking-[0.4em] text-accent-blue font-semibold">
+              10 — Contact
+            </div>
             {/* AIDA - Action: Benefit-led headline */}
             <h2 className="mt-4 text-4xl md:text-6xl font-bold leading-[0.95] text-balance">
-              Let's build your <span className="text-accent-blue">next workspace.</span>
+              Let's build your{" "}
+              <span className="text-accent-blue">next workspace.</span>
             </h2>
             <p className="mt-6 text-lg text-steel max-w-md leading-relaxed">
-              Share your seat count, floor plan or a reference image. Our team responds within one working day with a quote, finish options and a production timeline.
+              Share your seat count, floor plan or a reference image. Our team
+              responds within one working day with a quote, finish options and a
+              production timeline.
             </p>
           </Reveal>
           <div className="mt-8 space-y-4">
@@ -640,8 +887,12 @@ function Contact() {
                   <Phone className="h-5 w-5" />
                 </div>
                 <div>
-                  <div className="text-xs uppercase tracking-widest text-muted-foreground">Call</div>
-                  <div className="text-base font-bold text-ink">+91 99756 71961</div>
+                  <div className="text-xs uppercase tracking-widest text-muted-foreground">
+                    Call
+                  </div>
+                  <div className="text-base font-bold text-ink">
+                    +91 99756 71961
+                  </div>
                   <div className="text-sm text-steel">+91 89760 96509</div>
                 </div>
               </a>
@@ -655,8 +906,12 @@ function Contact() {
                   <Mail className="h-5 w-5" />
                 </div>
                 <div>
-                  <div className="text-xs uppercase tracking-widest text-muted-foreground">Email</div>
-                  <div className="text-base font-bold text-ink">trinetraengg.svp@gmail.com</div>
+                  <div className="text-xs uppercase tracking-widest text-muted-foreground">
+                    Email
+                  </div>
+                  <div className="text-base font-bold text-ink">
+                    trinetraengg.svp@gmail.com
+                  </div>
                 </div>
               </a>
             </Reveal>
@@ -666,10 +921,14 @@ function Contact() {
                   <MapPin className="h-5 w-5" />
                 </div>
                 <div>
-                  <div className="text-xs uppercase tracking-widest text-muted-foreground">Visit</div>
+                  <div className="text-xs uppercase tracking-widest text-muted-foreground">
+                    Visit
+                  </div>
                   <div className="text-sm text-steel mt-1 leading-relaxed">
-                    Gala No. 3 & 4, K.T. Compound,<br />
-                    Opp. JJ Retails & Fixtures, Wakan Pada,<br />
+                    Gala No. 3 & 4, K.T. Compound,
+                    <br />
+                    Opp. JJ Retails & Fixtures, Wakan Pada,
+                    <br />
                     Vasai East – 401209
                   </div>
                 </div>
@@ -695,33 +954,54 @@ function Footer() {
         <div>
           <Logo mono className="text-white" />
           <p className="mt-6 text-sm max-w-xs leading-relaxed">
-            Modular workstations & sheet metal solutions — engineered with modularity, delivered with pride.
+            Modular workstations & sheet metal solutions — engineered with
+            modularity, delivered with pride.
           </p>
-          <p className="mt-4 text-xs text-white/35">www.trinetraengineering.com</p>
+          <p className="mt-4 text-xs text-white/35">
+            www.trinetraengineering.com
+          </p>
         </div>
         <div>
-          <div className="text-xs uppercase tracking-[0.3em] text-white/35">Quick Links</div>
+          <div className="text-xs uppercase tracking-[0.3em] text-white/35">
+            Quick Links
+          </div>
           <ul className="mt-4 space-y-2 text-sm">
-            {["about", "services", "products", "projects", "contact"].map((l) => (
-              <li key={l}>
-                <a href={`#${l}`} className="hover:text-accent-blue capitalize transition-colors">{l}</a>
-              </li>
-            ))}
+            {["about", "services", "products", "projects", "contact"].map(
+              (l) => (
+                <li key={l}>
+                  <a
+                    href={`#${l}`}
+                    className="hover:text-accent-blue capitalize transition-colors"
+                  >
+                    {l}
+                  </a>
+                </li>
+              ),
+            )}
           </ul>
         </div>
         <div>
-          <div className="text-xs uppercase tracking-[0.3em] text-white/35">Contact</div>
+          <div className="text-xs uppercase tracking-[0.3em] text-white/35">
+            Contact
+          </div>
           <ul className="mt-4 space-y-2 text-sm">
             <li>+91 99756 71961</li>
             <li>+91 89760 96509</li>
             <li>trinetraengg.svp@gmail.com</li>
-            <li className="leading-relaxed">Gala 3 & 4, K.T. Compound,<br />Wakan Pada, Vasai East – 401209</li>
+            <li className="leading-relaxed">
+              Gala 3 & 4, K.T. Compound,
+              <br />
+              Wakan Pada, Vasai East – 401209
+            </li>
           </ul>
         </div>
       </div>
       <div className="border-t border-white/10">
         <div className="mx-auto max-w-7xl px-6 py-6 flex items-center justify-between text-xs text-white/35">
-          <span>© {new Date().getFullYear()} Trinetra Engineering. All rights reserved.</span>
+          <span>
+            © {new Date().getFullYear()} Trinetra Engineering. All rights
+            reserved.
+          </span>
           <span>Vasai East, Maharashtra</span>
         </div>
       </div>
