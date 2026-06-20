@@ -13,6 +13,9 @@ import { Logo } from "@/components/Logo";
 import { Reveal } from "@/components/Reveal";
 import { ContactForm } from "@/components/ContactForm";
 import { products, getProduct } from "@/lib/products";
+import { AnimatedGradientText } from "@/components/ui/AnimatedGradientText";
+import { NumberTicker } from "@/components/ui/NumberTicker";
+import { HScrollCarousel } from "@/components/HScrollCarousel";
 
 export default function ProductDetail() {
   const { slug } = useParams();
@@ -106,7 +109,9 @@ export default function ProductDetail() {
           <div className="lg:col-span-5">
             <Reveal>
               <div className="text-xs tracking-[0.3em] uppercase font-bold text-accent-blue">{product.code}</div>
-              <h1 className="mt-3 text-4xl md:text-5xl font-bold leading-[1.05] text-balance">{product.name}</h1>
+              <h1 className="mt-3 text-4xl md:text-5xl font-bold leading-[1.05] text-balance">
+                <AnimatedGradientText>{product.name}</AnimatedGradientText>
+              </h1>
               <p className="mt-4 text-lg text-steel">{product.tagline}</p>
               <div className="mt-6 flex flex-wrap gap-2">
                 {product.features.map((f) => (
@@ -144,12 +149,16 @@ export default function ProductDetail() {
               </div>
               <div className="md:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-6 text-center sm:text-left">
                 <div className="space-y-1">
-                  <div className="text-2xl md:text-3xl font-extrabold text-accent-blue">4+ Years</div>
+                  <div className="text-2xl md:text-3xl font-extrabold text-accent-blue tabular-nums">
+                    <NumberTicker value={4} suffix="+ Years" />
+                  </div>
                   <div className="text-xs font-bold uppercase tracking-wider text-white/85">Of Excellence</div>
                   <p className="text-[11px] text-white/50">Backed by strong technical expertise and hands-on experience in sheet metal solutions.</p>
                 </div>
                 <div className="space-y-1">
-                  <div className="text-2xl md:text-3xl font-extrabold text-accent-blue">100%</div>
+                  <div className="text-2xl md:text-3xl font-extrabold text-accent-blue tabular-nums">
+                    <NumberTicker value={100} suffix="%" />
+                  </div>
                   <div className="text-xs font-bold uppercase tracking-wider text-white/85">Custom Built</div>
                   <p className="text-[11px] text-white/50">Every workstation is manufactured to your exact layout, finish and dimension requirements.</p>
                 </div>
@@ -247,12 +256,17 @@ export default function ProductDetail() {
           <Reveal>
             <div className="text-center max-w-2xl mx-auto mb-12">
               <div className="text-xs uppercase tracking-[0.4em] text-accent-blue font-bold">The Deployment Package</div>
-              <h2 className="mt-3 text-xl md:text-2xl font-bold leading-tight text-ink">What's Included in Your Project</h2>
+              <h2 className="mt-3 text-xl md:text-2xl font-bold leading-tight text-ink">
+                What's Included in <AnimatedGradientText>Your Project</AnimatedGradientText>
+              </h2>
               <p className="mt-3 text-sm text-steel">When you source modular workstations direct from Trinetra, you don't just buy steel and wood. You get the complete enterprise-ready deployment package.</p>
             </div>
           </Reveal>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <HScrollCarousel
+            desktopClassName="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+            itemClassName="h-full"
+          >
             {[
               {
                 title: "Custom Factory Fabrication",
@@ -279,7 +293,7 @@ export default function ProductDetail() {
                 desc: "All structural components are certified under BIFMA standards with IS 513 cold-rolled carbon steel frames."
               }
             ].map((item, idx) => (
-              <Reveal key={item.title} delay={idx * 0.05}>
+              <Reveal key={item.title} delay={idx * 0.05} className="h-full">
                 <div className="p-6 rounded-2xl border border-border bg-muted/20 hover:border-accent-blue/40 transition-colors h-full flex flex-col justify-between">
                   <div>
                     <div className="h-9 w-9 rounded-full bg-accent-blue/10 flex items-center justify-center text-accent-blue mb-4">
@@ -291,7 +305,7 @@ export default function ProductDetail() {
                 </div>
               </Reveal>
             ))}
-          </div>
+          </HScrollCarousel>
         </div>
       </section>
 
@@ -305,7 +319,10 @@ export default function ProductDetail() {
               <p className="mt-3 text-sm text-steel max-w-xl mx-auto">Every workstation we ship meets stringent quality benchmarks — backed by certifications and a decade-long guarantee.</p>
             </div>
           </Reveal>
-          <div className="grid grid-cols-2 lg:grid-cols-5 gap-6">
+          <HScrollCarousel
+            desktopClassName="grid md:grid-cols-3 lg:grid-cols-5 gap-6"
+            itemClassName="h-full"
+          >
             {[
               { img: "/badges/iso_9001.png", title: "ISO 9001:2015", subtitle: "Certified Operations", desc: "Standardized fabrication and assembly workflow." },
               { img: "/badges/bifma.png", title: "BIFMA Compliant", subtitle: "Durability Standards", desc: "Safety, load stability, and ergonomic compliance." },
@@ -313,7 +330,7 @@ export default function ProductDetail() {
               { img: "/badges/ten_year_guarantee.png", title: "10-Year Guarantee", subtitle: "Ironclad Warranty", desc: "Free replacement for any frame bending or rusting." },
               { img: "/badges/make_in_india.png", title: "100% Make In India", subtitle: "Factory-Direct Value", desc: "Proudly manufactured locally in Vasai East." },
             ].map((c) => (
-              <Reveal key={c.title}>
+              <Reveal key={c.title} className="h-full">
                 <div className="bg-white rounded-2xl border border-border p-5 h-full text-center hover:border-accent-blue/40 transition-colors shadow-sm flex flex-col justify-between items-center">
                   <div>
                     <div className="inline-flex items-center justify-center mb-4 h-20 w-20 overflow-hidden rounded-full border border-border/40 bg-muted/10">
@@ -326,7 +343,7 @@ export default function ProductDetail() {
                 </div>
               </Reveal>
             ))}
-          </div>
+          </HScrollCarousel>
         </div>
       </section>
 
@@ -375,6 +392,7 @@ export default function ProductDetail() {
           </Reveal>
         </div>
       </section>
+
 
       {/* Inquiry */}
       <section id="inquire" className="py-20 px-6">
@@ -432,12 +450,16 @@ export default function ProductDetail() {
           <Reveal>
             <h2 className="text-xl md:text-2xl font-bold">Also consider</h2>
           </Reveal>
-          <div className="mt-10 grid md:grid-cols-3 gap-6">
+          <HScrollCarousel
+            className="mt-10"
+            desktopClassName="grid md:grid-cols-3 gap-6"
+            itemClassName="h-full"
+          >
             {related.map((r) => (
               <Link
                 key={r.slug}
                 to={`/products/${r.slug}`}
-                className="group rounded-2xl overflow-hidden bg-white/5 border border-white/10 hover:border-accent-blue transition-colors block"
+                className="group rounded-2xl overflow-hidden bg-white/5 border border-white/10 hover:border-accent-blue transition-colors block h-full"
               >
                 <div className="aspect-[4/3] overflow-hidden">
                   <img src={r.img} alt={r.name} loading="lazy" decoding="async" className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-700" />
@@ -451,7 +473,7 @@ export default function ProductDetail() {
                 </div>
               </Link>
             ))}
-          </div>
+          </HScrollCarousel>
         </div>
       </section>
 

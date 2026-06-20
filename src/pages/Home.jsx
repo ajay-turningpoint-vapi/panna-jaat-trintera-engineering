@@ -35,32 +35,38 @@ import { NumberTicker } from "@/components/ui/NumberTicker";
 import { AnimatedGradientText } from "@/components/ui/AnimatedGradientText";
 import DynamicWaves from "@/components/ui/DynamicWaves";
 import { products } from "@/lib/products";
+import { CircularServices } from "@/components/ui/CircularServices";
 
 const services = [
   {
     icon: Building2,
     title: "Modular Workstation Manufacturing",
     copy: "From a 4-seat starter to a 200-seat floor — every bench sized, finished and cabled to your exact specification.",
+    image: "/service_workstation.png",
   },
   {
     icon: Layers,
     title: "Sheet Metal Fabrication",
     copy: "CRCA sheet cut, bent, welded and powder coated in-house. Total quality control. Zero outsourcing.",
+    image: "/service_fabrication.png",
   },
   {
     icon: Settings2,
     title: "Custom Design & Development",
     copy: "Send us your floor plan. We return a layout-optimised workstation design within 24 hours.",
+    image: "/service_design.png",
   },
   {
     icon: Wrench,
     title: "Welding & Assembly",
     copy: "Every joint MIG-welded on a squareness jig. Structural integrity inspected at every shift.",
+    image: "/service_welding.png",
   },
   {
     icon: Paintbrush,
     title: "Powder Coating & Finishing",
     copy: "7-step pretreatment. 60-micron electrostatic coat. Baked at 200°C. Built to last a decade.",
+    image: "/service_coating.png",
   },
 ];
 
@@ -532,50 +538,9 @@ function Services() {
           </Reveal>
         </div>
 
-        {/* Mobile: horizontal scroll */}
-        <div className="md:hidden flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 -mx-6 px-6 scrollbar-none">
-          {services.map((s, i) => (
-            <div
-              key={s.title}
-              className="snap-start shrink-0 w-[72vw] max-w-[280px] rounded-2xl border border-white/10 bg-white/5 p-6"
-            >
-              <s.icon className="h-8 w-8 text-accent-blue" strokeWidth={1.5} />
-              <h3 className="mt-4 text-base font-bold leading-tight">
-                {s.title}
-              </h3>
-              <p className="mt-2 text-xs text-white/55 leading-relaxed">
-                {s.copy}
-              </p>
-              <div className="mt-6 text-xs tracking-[0.3em] uppercase text-white/20">
-                0{i + 1}
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Desktop: grid */}
-        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/10 border border-white/10 rounded-2xl overflow-hidden">
-          {services.map((s, i) => (
-            <Reveal key={s.title} delay={i * 0.07}>
-              <div className="group bg-ink p-8 h-full hover:bg-accent-blue/10 transition-colors relative overflow-hidden">
-                <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-accent-blue/0 group-hover:bg-accent-blue/15 blur-2xl transition-colors" />
-                <s.icon
-                  className="h-10 w-10 text-accent-blue"
-                  strokeWidth={1.5}
-                />
-                <h3 className="mt-6 text-xl font-bold leading-tight">
-                  {s.title}
-                </h3>
-                <p className="mt-3 text-sm text-white/60 leading-relaxed">
-                  {s.copy}
-                </p>
-                <div className="mt-8 text-xs tracking-[0.3em] uppercase text-white/25">
-                  0{i + 1}
-                </div>
-              </div>
-            </Reveal>
-          ))}
-        </div>
+        <Reveal className="overflow-visible w-full mt-10">
+          <CircularServices services={services} />
+        </Reveal>
       </div>
     </section>
   );
