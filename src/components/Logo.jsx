@@ -1,6 +1,6 @@
 export function Logo({ className = "", mono = false, titleColor }) {
   const primary = "var(--accent-blue)";
-  const dark = titleColor ?? (mono ? "currentColor" : "var(--ink)");
+  const dark = titleColor ?? (mono ? "currentColor" : "#ffffff");
   return (
     <div className={`flex items-center gap-3 ${className}`}>
       <img

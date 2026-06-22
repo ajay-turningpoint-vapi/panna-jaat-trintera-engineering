@@ -68,7 +68,7 @@ export default function ProductDetail() {
       {/* Nav */}
       <header className="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-border">
         <div className="mx-auto max-w-7xl px-6 h-16 flex items-center justify-between">
-          <Link to="/"><Logo /></Link>
+          <Link to="/"><Logo titleColor="var(--ink)" /></Link>
           <Link to="/" className="text-sm font-medium text-steel hover:text-accent-blue inline-flex items-center gap-2">
             <ArrowLeft className="h-4 w-4" /> All products
           </Link>

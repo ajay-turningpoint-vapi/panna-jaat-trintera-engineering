@@ -5,8 +5,9 @@ import {
   useTransform,
   useSpring,
   useReducedMotion,
+  AnimatePresence,
 } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState, useCallback } from "react";
 import {
   ArrowUpRight,
   ShieldCheck,
@@ -23,6 +24,8 @@ import {
   Building2,
   Factory,
   Layers,
+  Menu,
+  X,
 } from "lucide-react";
 import { Logo } from "@/components/Logo";
 import { Reveal, SplitText } from "@/components/Reveal";
@@ -119,7 +122,16 @@ export default function Home() {
 }
 
 /* ───────── NAV ───────── */
+const navLinks = [
+  { label: "About", href: "#about" },
+  { label: "Services", href: "#services" },
+  { label: "Products", href: "#products" },
+  { label: "Projects", href: "#projects" },
+  { label: "Contact", href: "#contact" },
+];
+
 function Nav() {
+  const [mobileOpen, setMobileOpen] = useState(false);
   const { scrollY } = useScroll();
   const bg = useTransform(
     scrollY,
@@ -131,54 +143,124 @@ function Nav() {
     [0, 80],
     ["rgba(0,0,0,0)", "rgba(0,0,0,0.08)"],
   );
+  /* scroll-aware TRINETRA color: white at top → ink after scroll */
+  const titleColor = useTransform(
+    scrollY,
+    [0, 80],
+    ["#ffffff", "var(--ink)"],
+  );
+
+  const closeMobile = useCallback(() => setMobileOpen(false), []);
+
   return (
-    <motion.header
-      style={{
-        backgroundColor: bg,
-        borderColor: border,
-        backdropFilter: "blur(14px)",
-      }}
-      className="fixed top-0 inset-x-0 z-50 border-b"
-    >
-      <div className="mx-auto max-w-7xl px-6 h-16 flex items-center justify-between">
-        <Logo />
-        <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-ink/75">
-          <a href="#about" className="hover:text-accent-blue transition-colors">
-            About
-          </a>
-          <a
-            href="#services"
-            className="hover:text-accent-blue transition-colors"
-          >
-            Services
-          </a>
-          <a
-            href="#products"
-            className="hover:text-accent-blue transition-colors"
-          >
-            Products
-          </a>
-          <a
-            href="#projects"
-            className="hover:text-accent-blue transition-colors"
-          >
-            Projects
-          </a>
+    <>
+      <motion.header
+        style={{
+          backgroundColor: bg,
+          borderColor: border,
+          backdropFilter: "blur(14px)",
+        }}
+        className="fixed top-0 inset-x-0 z-50 border-b"
+      >
+        <div className="mx-auto max-w-7xl px-6 h-16 flex items-center justify-between">
+          <motion.div style={{ "--title-color": titleColor }}>
+            <Logo titleColor="var(--title-color)" />
+          </motion.div>
+
+          {/* Desktop links */}
+          <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-ink/75">
+            {navLinks.map((l) => (
+              <a key={l.href} href={l.href} className="hover:text-accent-blue transition-colors">
+                {l.label}
+              </a>
+            ))}
+          </nav>
+
+          {/* Desktop CTA */}
           <a
             href="#contact"
-            className="hover:text-accent-blue transition-colors"
+            className="hidden md:inline-flex items-center gap-2 rounded-full bg-ink text-white px-4 py-2 text-sm font-semibold hover:bg-accent-blue transition-colors"
           >
-            Contact
+            Request Quote <ArrowUpRight className="h-4 w-4" />
           </a>
-        </nav>
-        <a
-          href="#contact"
-          className="hidden md:inline-flex items-center gap-2 rounded-full bg-ink text-white px-4 py-2 text-sm font-semibold hover:bg-accent-blue transition-colors"
-        >
-          Request Quote <ArrowUpRight className="h-4 w-4" />
-        </a>
-      </div>
-    </motion.header>
+
+          {/* Mobile hamburger */}
+          <button
+            onClick={() => setMobileOpen(true)}
+            className="md:hidden flex items-center justify-center h-10 w-10 rounded-lg text-white hover:bg-white/10 transition-colors"
+            aria-label="Open menu"
+          >
+            <Menu className="h-6 w-6" />
+          </button>
+        </div>
+      </motion.header>
+
+      {/* ── Mobile drawer ── */}
+      <AnimatePresence>
+        {mobileOpen && (
+          <>
+            {/* backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              onClick={closeMobile}
+              className="fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm"
+            />
+            {/* panel */}
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", damping: 28, stiffness: 300 }}
+              className="fixed top-0 right-0 bottom-0 z-[70] w-72 bg-ink text-white flex flex-col shadow-2xl"
+            >
+              <div className="flex items-center justify-between p-6 border-b border-white/10">
+                <Logo />
+                <button
+                  onClick={closeMobile}
+                  className="h-10 w-10 rounded-lg flex items-center justify-center hover:bg-white/10 transition-colors"
+                  aria-label="Close menu"
+                >
+                  <X className="h-5 w-5" />
+                </button>
+              </div>
+              <nav className="flex-1 flex flex-col gap-1 p-6">
+                {navLinks.map((l, i) => (
+                  <motion.a
+                    key={l.href}
+                    href={l.href}
+                    onClick={closeMobile}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.05 + i * 0.05 }}
+                    className="text-lg font-semibold py-3 px-4 rounded-xl hover:bg-white/10 transition-colors"
+                  >
+                    {l.label}
+                  </motion.a>
+                ))}
+              </nav>
+              <div className="p-6 border-t border-white/10">
+                <a
+                  href="#contact"
+                  onClick={closeMobile}
+                  className="flex items-center justify-center gap-2 rounded-full bg-accent-blue text-white px-6 py-3.5 text-sm font-semibold w-full hover:brightness-110 transition"
+                >
+                  Request Quote <ArrowUpRight className="h-4 w-4" />
+                </a>
+                <a
+                  href="tel:+919975671961"
+                  className="flex items-center justify-center gap-2 mt-3 rounded-full border border-white/20 text-white px-6 py-3 text-sm font-medium w-full hover:bg-white/10 transition-colors"
+                >
+                  <Phone className="h-4 w-4" /> +91 99756 71961
+                </a>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+    </>
   );
 }
 
@@ -213,35 +295,6 @@ function Hero() {
         <div className="absolute inset-0 blueprint-bg opacity-35" />
       </motion.div>
 
-      {/* Chevron accent */}
-      <div className="absolute right-0 top-0 h-full w-1/2 pointer-events-none">
-        <svg
-          viewBox="0 0 600 800"
-          className="h-full w-full"
-          preserveAspectRatio="none"
-        >
-          <defs>
-            <linearGradient id="cv" x1="0" y1="0" x2="1" y2="1">
-              <stop
-                offset="0"
-                stopColor="var(--accent-blue)"
-                stopOpacity="0.0"
-              />
-              <stop
-                offset="1"
-                stopColor="var(--accent-blue)"
-                stopOpacity="0.5"
-              />
-            </linearGradient>
-          </defs>
-          <path d="M150 0 L600 0 L600 800 L300 800 Z" fill="url(#cv)" />
-          <path
-            d="M150 0 L155 0 L305 800 L300 800 Z"
-            fill="var(--accent-blue)"
-            opacity="0.85"
-          />
-        </svg>
-      </div>
 
       <motion.div
         style={{ opacity }}
