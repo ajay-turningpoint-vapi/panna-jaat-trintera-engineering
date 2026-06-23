@@ -6,8 +6,8 @@ export function Logo({ className = "", mono = false, titleColor }) {
       <img
         src="/logo.png"
         alt="Trinetra Engineering"
-        width="40"
-        height="40"
+        width="60"
+        height="60"
         className="object-contain"
       />
       <div className="leading-none">
