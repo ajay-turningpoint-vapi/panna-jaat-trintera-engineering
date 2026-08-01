@@ -518,15 +518,20 @@ function About() {
             </div>
             <h2 className="mt-4 text-5xl md:text-6xl font-bold text-balance leading-[0.95]">
               A trusted name in{" "}
-              <AnimatedGradientText>sheet metal</AnimatedGradientText> for 4+
+              <span style={{ color: "#2a76e2" }}>sheet metal</span> for 4+
               years.
             </h2>
+            <div className="mt-6 inline-flex items-center gap-2.5 rounded-full border border-[#2a76e2]/30 bg-[#2a76e2]/10 px-4 py-2 text-sm font-semibold text-[#2a76e2]">
+              <span className="text-steel font-normal">Owner & Founder:</span>
+              <span className="font-bold text-ink">Paana Jath</span>
+            </div>
           </Reveal>
         </div>
         <div className="lg:col-span-7 space-y-6">
           <Reveal delay={0.1}>
             <p className="text-lg text-steel leading-relaxed">
-              Trinetra Engineering is a trusted name in the sheet metal
+              Trinetra Engineering is a trusted name in the{" "}
+              <strong style={{ color: "#2a76e2" }}>sheet metal</strong>{" "}
               industry. Backed by strong technical expertise and hands-on
               experience, we deliver{" "}
               <strong className="text-ink">
@@ -538,8 +543,8 @@ function About() {
             <p className="text-lg text-steel leading-relaxed">
               With over{" "}
               <strong className="text-ink">4+ years of excellence</strong>, we
-              specialise in manufacturing high-quality Modular Workstations,
-              Sheet Metal Components and Custom Fabrication solutions —
+              specialise in manufacturing high-quality Modular Workstations,{" "}
+              <strong style={{ color: "#2a76e2" }}>Sheet Metal Components</strong> and Custom Fabrication solutions —
               committed to durability, precision and customer satisfaction.
             </p>
           </Reveal>

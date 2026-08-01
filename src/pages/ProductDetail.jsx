@@ -109,8 +109,8 @@ export default function ProductDetail() {
           <div className="lg:col-span-5">
             <Reveal>
               <div className="text-xs tracking-[0.3em] uppercase font-bold text-accent-blue">{product.code}</div>
-              <h1 className="mt-3 text-4xl md:text-5xl font-bold leading-[1.05] text-balance">
-                <AnimatedGradientText>{product.name}</AnimatedGradientText>
+              <h1 className="mt-3 text-4xl md:text-5xl font-bold leading-[1.05] text-balance text-[#2a76e2]">
+                {product.name}
               </h1>
               <p className="mt-4 text-lg text-steel">{product.tagline}</p>
               <div className="mt-6 flex flex-wrap gap-2">
@@ -257,7 +257,7 @@ export default function ProductDetail() {
             <div className="text-center max-w-2xl mx-auto mb-12">
               <div className="text-xs uppercase tracking-[0.4em] text-accent-blue font-bold">The Deployment Package</div>
               <h2 className="mt-3 text-xl md:text-2xl font-bold leading-tight text-ink">
-                What's Included in <AnimatedGradientText>Your Project</AnimatedGradientText>
+                What's Included in <span className="text-[#2a76e2]">Your Project</span>
               </h2>
               <p className="mt-3 text-sm text-steel">When you source modular workstations direct from Trinetra, you don't just buy steel and wood. You get the complete enterprise-ready deployment package.</p>
             </div>
