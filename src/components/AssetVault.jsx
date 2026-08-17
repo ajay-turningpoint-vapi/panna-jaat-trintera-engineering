@@ -36,11 +36,10 @@ export function AssetVault() {
         <div className="grid lg:grid-cols-12 gap-12 items-end mb-14">
           <Reveal className="lg:col-span-7">
             <div className="text-xs uppercase tracking-[0.4em] text-accent-blue font-semibold">
-              <span className="font-serif italic text-base normal-case tracking-normal mr-2">07</span>
-              — Architect Asset Vault
+              Architect Asset Vault
             </div>
             <h2 className="mt-4 text-5xl md:text-7xl font-bold leading-[0.9] text-balance">
-              Drop a Trinetra block into your <span className="font-serif italic text-accent-blue">floor plan</span>.
+              Drop a Trinetra block into your <span className="text-accent-blue">floor plan</span>.
             </h2>
           </Reveal>
           <Reveal delay={0.15} className="lg:col-span-5 text-steel text-lg">
@@ -60,7 +59,7 @@ export function AssetVault() {
                   <div className="h-12 w-12 rounded-xl bg-ink/5 group-hover:bg-accent-blue/10 flex items-center justify-center transition-colors">
                     <f.icon className="h-6 w-6 text-ink group-hover:text-accent-blue transition-colors" strokeWidth={1.5} />
                   </div>
-                  <span className="font-serif italic text-2xl text-accent-blue/70">0{i + 1}</span>
+                  <span className="text-2xl text-accent-blue/70">0{i + 1}</span>
                 </div>
                 <div className="mt-8">
                   <div className="flex items-baseline gap-2">

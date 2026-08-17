@@ -27,7 +27,7 @@ export function CaseStudies() {
       <div className="mx-auto max-w-7xl">
         <div className="flex items-end justify-between flex-wrap gap-6 mb-16">
           <Reveal>
-            <div className="text-xs uppercase tracking-[0.4em] text-accent-blue font-semibold">05 — Projects</div>
+            <div className="text-xs uppercase tracking-[0.4em] text-accent-blue font-semibold">Projects</div>
             <h2 className="mt-4 text-5xl md:text-6xl font-bold leading-[0.95] max-w-3xl text-balance">
               Empty floorplate to <span className="text-accent-blue">live workplace.</span>
             </h2>

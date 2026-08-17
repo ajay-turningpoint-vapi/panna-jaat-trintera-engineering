@@ -148,13 +148,19 @@ export function CircularServices({ services, autoplay = true }) {
                 }`}
                 style={getCardStyle(index)}
               >
-                {service.image && (
-                  <img 
-                    src={service.image} 
-                    alt={service.title} 
-                    className="w-full h-full object-cover select-none pointer-events-none" 
-                  />
-                )}
+                <div className="w-full h-full bg-white/[0.03] flex flex-col items-center justify-center p-6 text-center backdrop-blur-md">
+                  <div className={`p-5 rounded-2xl bg-accent-blue/10 border border-accent-blue/20 mb-6 transition-all duration-500 shadow-[inset_0_0_20px_rgba(93,130,240,0.15)] ${isActive ? 'scale-110 bg-accent-blue/20' : 'scale-100'}`}>
+                    <Icon className={`w-12 h-12 text-accent-blue transition-all duration-500 ${isActive ? 'opacity-100 drop-shadow-[0_0_15px_rgba(93,130,240,0.6)]' : 'opacity-60'}`} strokeWidth={1.5} />
+                  </div>
+                  <h4 className={`font-semibold text-sm md:text-base text-balance leading-tight transition-all duration-500 ${isActive ? 'text-white' : 'text-white/50'}`}>
+                    {service.title}
+                  </h4>
+                  {/* Decorative corner accents */}
+                  <div className="absolute top-0 left-0 w-12 h-12 border-t border-l border-white/10 rounded-tl-3xl opacity-50 pointer-events-none"></div>
+                  <div className="absolute bottom-0 right-0 w-12 h-12 border-b border-r border-white/10 rounded-br-3xl opacity-50 pointer-events-none"></div>
+                  {/* Subtle background glow */}
+                  <div className={`absolute inset-0 bg-accent-blue/5 rounded-3xl opacity-0 transition-opacity duration-500 pointer-events-none ${isActive ? 'opacity-100' : ''}`}></div>
+                </div>
               </div>
             );
           })}

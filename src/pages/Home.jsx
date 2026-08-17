@@ -45,31 +45,26 @@ const services = [
     icon: Building2,
     title: "Modular Workstation Manufacturing",
     copy: "From a 4-seat starter to a 200-seat floor — every bench sized, finished and cabled to your exact specification.",
-    image: "/service_workstation.png",
   },
   {
     icon: Layers,
     title: "Sheet Metal Fabrication",
     copy: "CRCA sheet cut, bent, welded and powder coated in-house. Total quality control. Zero outsourcing.",
-    image: "/service_fabrication.png",
   },
   {
     icon: Settings2,
     title: "Custom Design & Development",
     copy: "Send us your floor plan. We return a layout-optimised workstation design within 24 hours.",
-    image: "/service_design.png",
   },
   {
     icon: Wrench,
     title: "Welding & Assembly",
     copy: "Every joint MIG-welded on a squareness jig. Structural integrity inspected at every shift.",
-    image: "/service_welding.png",
   },
   {
     icon: Paintbrush,
     title: "Powder Coating & Finishing",
     copy: "7-step pretreatment. 60-micron electrostatic coat. Baked at 200°C. Built to last a decade.",
-    image: "/service_coating.png",
   },
 ];
 
@@ -514,7 +509,7 @@ function About() {
         <div className="lg:col-span-5">
           <Reveal>
             <div className="text-xs uppercase tracking-[0.4em] text-accent-blue font-semibold">
-              01 — About Us
+              About Us
             </div>
             <h2 className="mt-4 text-5xl md:text-6xl font-bold text-balance leading-[0.95]">
               A trusted name in{" "}
@@ -581,7 +576,7 @@ function Services() {
         <div className="flex items-end justify-between flex-wrap gap-4 mb-10 md:mb-16">
           <Reveal>
             <div className="text-xs uppercase tracking-[0.4em] text-accent-blue font-semibold">
-              02 — Services
+              Services
             </div>
             <h2 className="mt-4 text-5xl md:text-6xl font-bold text-balance max-w-2xl leading-[0.95]">
               Everything under{" "}
@@ -668,7 +663,7 @@ function HowWeWork() {
         <div className="relative h-full flex items-center mx-auto max-w-7xl px-6">
           <Reveal>
             <div className="text-xs uppercase tracking-[0.4em] text-accent-blue font-semibold">
-              03 — How We Work
+              How We Work
             </div>
             <h2 className="mt-4 text-4xl md:text-6xl font-bold text-white leading-[0.95]">
               From requirement
@@ -748,7 +743,7 @@ function Products() {
         <div className="flex items-end justify-between flex-wrap gap-4 mb-8 md:mb-16">
           <Reveal>
             <div className="text-xs uppercase tracking-[0.4em] text-accent-blue font-semibold">
-              04 — Products
+              Products
             </div>
             <h2 className="mt-4 text-5xl md:text-6xl font-bold text-balance max-w-3xl leading-[0.95]">
               A modular system for{" "}
@@ -840,7 +835,7 @@ function Projects() {
       <div className="mx-auto max-w-7xl">
         <Reveal>
           <div className="text-xs uppercase tracking-[0.4em] text-accent-blue font-semibold">
-            09 — Completed Projects
+            Completed Projects
           </div>
           <h2 className="mt-4 text-5xl md:text-6xl font-bold leading-[0.95] max-w-3xl">
             Trusted across <span className="text-accent-blue">India.</span>
@@ -887,7 +882,7 @@ function Contact() {
         <div className="lg:col-span-5">
           <Reveal>
             <div className="text-xs uppercase tracking-[0.4em] text-accent-blue font-semibold">
-              10 — Contact
+              Contact
             </div>
             {/* AIDA - Action: Benefit-led headline */}
             <h2 className="mt-4 text-4xl md:text-6xl font-bold leading-[0.95] text-balance">

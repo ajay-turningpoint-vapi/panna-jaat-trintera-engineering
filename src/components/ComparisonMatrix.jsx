@@ -45,11 +45,10 @@ export function ComparisonMatrix() {
         <div className="grid lg:grid-cols-12 gap-10 items-end mb-14">
           <Reveal className="lg:col-span-7">
             <div className="text-xs uppercase tracking-[0.4em] text-accent-blue font-semibold">
-              <span className="font-serif italic text-base normal-case tracking-normal mr-2">06</span>
-              — Why factory-direct
+              Why factory-direct
             </div>
             <h2 className="mt-4 text-5xl md:text-7xl font-bold leading-[0.9] text-balance">
-              The honest <span className="font-serif italic text-accent-blue">difference</span>, line by line.
+              The honest <span className="text-accent-blue">difference</span>, line by line.
             </h2>
           </Reveal>
           <Reveal delay={0.15} className="lg:col-span-5 text-white/60 text-lg">
@@ -72,7 +71,7 @@ export function ComparisonMatrix() {
             <Reveal key={r.label} delay={i * 0.05}>
               <div className="grid grid-cols-1 md:grid-cols-12 gap-y-3 md:gap-x-6 px-6 md:px-8 py-7 border-b border-white/10 last:border-b-0 hover:bg-white/[0.02] transition-colors group">
                 <div className="md:col-span-4 flex items-baseline gap-3">
-                  <span className="font-serif italic text-accent-blue text-lg">0{i + 1}</span>
+                  <span className="text-accent-blue text-lg">0{i + 1}</span>
                   <span className="text-lg font-semibold text-white">{r.label}</span>
                 </div>
                 <div className="md:col-span-4 text-white/50 text-sm leading-relaxed">
