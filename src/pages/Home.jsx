@@ -687,8 +687,8 @@ function HowWeWork() {
             itemClassName="h-full"
           >
             {steps.map((s, i) => (
-              <Reveal key={s.n} delay={i * 0.08} className="h-full">
-                <div className="group bg-white/5 md:bg-ink hover:bg-accent-blue/10 transition-colors p-6 md:p-8 rounded-2xl md:rounded-none border border-white/10 md:border-none relative overflow-hidden h-full flex flex-col">
+              <Reveal key={s.n} delay={i * 0.08} className="h-full w-full flex flex-col">
+                <div className="group bg-white/5 md:bg-ink hover:bg-accent-blue/10 transition-colors p-6 md:p-8 rounded-2xl md:rounded-none border border-white/10 md:border-none relative overflow-hidden flex-1 flex flex-col justify-start">
                   <div className="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-accent-blue/0 group-hover:bg-accent-blue/15 blur-2xl transition-colors hidden md:block" />
                   <div className="text-4xl md:text-5xl font-bold text-white/10 md:text-white/8 leading-none mb-4 md:mb-6 group-hover:text-white/12 transition-colors">
                     {s.n}

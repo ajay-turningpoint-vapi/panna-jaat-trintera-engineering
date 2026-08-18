@@ -49,10 +49,10 @@ export function AssetVault() {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {formats.map((f, i) => (
-            <Reveal key={f.label} delay={i * 0.06}>
+            <Reveal key={f.label} delay={i * 0.06} className="h-full w-full flex flex-col">
               <a
                 href="#contact"
-                className="group relative block rounded-2xl border border-border bg-white p-6 h-full overflow-hidden hover:border-accent-blue transition-colors"
+                className="group relative flex-1 rounded-2xl border border-border bg-white p-6 overflow-hidden hover:border-accent-blue transition-colors flex flex-col justify-between"
               >
                 <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-accent-blue/0 group-hover:bg-accent-blue/10 blur-2xl transition-colors" />
                 <div className="flex items-start justify-between">
