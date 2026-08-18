@@ -28,6 +28,7 @@ import {
   X,
 } from "lucide-react";
 import { Logo } from "@/components/Logo";
+import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 import { Reveal, SplitText } from "@/components/Reveal";
 import { ContactForm } from "@/components/ContactForm";
 import { CaseStudies } from "@/components/CaseStudies";
@@ -250,7 +251,15 @@ function Nav() {
                   href="tel:+919975671961"
                   className="flex items-center justify-center gap-2 mt-3 rounded-full border border-white/20 text-white px-6 py-3 text-sm font-medium w-full hover:bg-white/10 transition-colors"
                 >
-                  <Phone className="h-4 w-4" /> +91 99756 71961
+                  <Phone className="h-4 w-4" /> Call Us
+                </a>
+                <a
+                  href="https://wa.me/917972251822"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center justify-center gap-2 mt-3 rounded-full border border-green-500/30 bg-green-500/10 text-green-400 px-6 py-3 text-sm font-medium w-full hover:bg-green-500/20 transition-colors"
+                >
+                  <WhatsAppIcon className="h-4 w-4" /> WhatsApp
                 </a>
               </div>
             </motion.div>
@@ -898,6 +907,27 @@ function Contact() {
                     +91 99756 71961
                   </div>
                   <div className="text-sm text-steel">+91 89760 96509</div>
+                </div>
+              </a>
+            </Reveal>
+            <Reveal delay={0.15}>
+              <a
+                href="https://wa.me/917972251822"
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-4 rounded-2xl border border-border bg-white p-5 hover:border-[#25D366] transition-colors group"
+              >
+                <div className="h-11 w-11 rounded-xl bg-[#25D366]/10 flex items-center justify-center text-[#25D366]">
+                  <WhatsAppIcon className="h-5 w-5" />
+                </div>
+                <div>
+                  <div className="text-xs uppercase tracking-widest text-muted-foreground">
+                    WhatsApp
+                  </div>
+                  <div className="text-base font-bold text-ink">
+                    +91 79 7225 1822
+                  </div>
+                  <div className="text-sm text-steel">Direct chat</div>
                 </div>
               </a>
             </Reveal>

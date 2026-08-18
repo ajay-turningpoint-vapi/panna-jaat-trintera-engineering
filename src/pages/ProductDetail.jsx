@@ -7,9 +7,10 @@ import {
   ChevronRight,
   ShieldCheck,
   Check,
-  Phone
+  Phone,
 } from "lucide-react";
 import { Logo } from "@/components/Logo";
+import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 import { Reveal } from "@/components/Reveal";
 import { ContactForm } from "@/components/ContactForm";
 import { products, getProduct } from "@/lib/products";
@@ -489,7 +490,7 @@ export default function ProductDetail() {
             <span className="text-[10px] tracking-widest text-accent-blue font-bold uppercase">{product.code}</span>
             <h4 className="text-sm font-bold text-ink">{product.name}</h4>
           </div>
-          <div className="flex items-center gap-3 w-full sm:w-auto justify-end">
+          <div className="flex items-center gap-2 sm:gap-3 w-full sm:w-auto justify-end">
             <a 
               href="tel:+919975671961" 
               className="inline-flex items-center justify-center p-3 rounded-full border border-border text-steel hover:text-accent-blue hover:border-accent-blue transition-colors"
@@ -498,10 +499,19 @@ export default function ProductDetail() {
               <Phone className="h-4 w-4" />
             </a>
             <a 
-              href="#inquire" 
-              className="flex-1 sm:flex-none text-center inline-flex items-center justify-center gap-2 rounded-full bg-ink text-white px-5 py-2.5 text-xs font-bold hover:bg-accent-blue transition-colors"
+              href="https://wa.me/917972251822"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center justify-center p-3 rounded-full border border-[#25D366]/30 bg-[#25D366]/10 text-[#25D366] hover:bg-[#25D366]/20 transition-colors"
+              aria-label="WhatsApp Us"
             >
-              Request Factory Quote <ArrowUpRight className="h-3.5 w-3.5" />
+              <WhatsAppIcon className="h-4 w-4" />
+            </a>
+            <a 
+              href="#inquire" 
+              className="flex-1 sm:flex-none text-center inline-flex items-center justify-center gap-2 rounded-full bg-ink text-white px-5 py-2.5 text-xs font-bold hover:bg-accent-blue transition-colors whitespace-nowrap"
+            >
+              Request Factory Quote <ArrowUpRight className="h-3.5 w-3.5 hidden sm:block" />
             </a>
           </div>
         </div>
