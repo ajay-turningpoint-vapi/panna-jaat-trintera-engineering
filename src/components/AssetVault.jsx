@@ -49,29 +49,30 @@ export function AssetVault() {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {formats.map((f, i) => (
-            <Reveal key={f.label} delay={i * 0.06} className="h-full w-full flex flex-col">
-              <a
-                href="#contact"
-                className="group relative flex-1 rounded-2xl border border-border bg-white p-6 overflow-hidden hover:border-accent-blue transition-colors flex flex-col justify-between"
-              >
-                <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-accent-blue/0 group-hover:bg-accent-blue/10 blur-2xl transition-colors" />
-                <div className="flex items-start justify-between">
-                  <div className="h-12 w-12 rounded-xl bg-ink/5 group-hover:bg-accent-blue/10 flex items-center justify-center transition-colors">
-                    <f.icon className="h-6 w-6 text-ink group-hover:text-accent-blue transition-colors" strokeWidth={1.5} />
-                  </div>
-                  <span className="text-2xl text-accent-blue/70">0{i + 1}</span>
+            <Reveal 
+              key={f.label} 
+              delay={i * 0.06} 
+              as="a"
+              href="#contact"
+              className="group relative rounded-2xl border border-border bg-white p-6 overflow-hidden hover:border-accent-blue transition-colors flex flex-col justify-between w-full h-full"
+            >
+              <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-accent-blue/0 group-hover:bg-accent-blue/10 blur-2xl transition-colors" />
+              <div className="flex items-start justify-between relative z-10">
+                <div className="h-12 w-12 rounded-xl bg-ink/5 group-hover:bg-accent-blue/10 flex items-center justify-center transition-colors">
+                  <f.icon className="h-6 w-6 text-ink group-hover:text-accent-blue transition-colors" strokeWidth={1.5} />
                 </div>
-                <div className="mt-8">
-                  <div className="flex items-baseline gap-2">
-                    <h3 className="text-xl font-bold text-ink">{f.label}</h3>
-                    <span className="text-xs font-mono text-muted-foreground">{f.ext}</span>
-                  </div>
-                  <p className="mt-2 text-sm text-steel leading-relaxed">{f.note}</p>
+                <span className="text-2xl text-accent-blue/70">0{i + 1}</span>
+              </div>
+              <div className="mt-8 relative z-10">
+                <div className="flex items-baseline gap-2">
+                  <h3 className="text-xl font-bold text-ink">{f.label}</h3>
+                  <span className="text-xs font-mono text-muted-foreground">{f.ext}</span>
                 </div>
-                <div className="mt-6 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-accent-blue">
-                  <Download className="h-3.5 w-3.5" /> Request file
-                </div>
-              </a>
+                <p className="mt-2 text-sm text-steel leading-relaxed">{f.note}</p>
+              </div>
+              <div className="mt-6 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-accent-blue relative z-10">
+                <Download className="h-3.5 w-3.5" /> Request file
+              </div>
             </Reveal>
           ))}
         </div>

@@ -687,19 +687,21 @@ function HowWeWork() {
             itemClassName="h-full"
           >
             {steps.map((s, i) => (
-              <Reveal key={s.n} delay={i * 0.08} className="h-full w-full flex flex-col">
-                <div className="group bg-white/5 md:bg-ink hover:bg-accent-blue/10 transition-colors p-6 md:p-8 rounded-2xl md:rounded-none border border-white/10 md:border-none relative overflow-hidden flex-1 flex flex-col justify-start">
-                  <div className="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-accent-blue/0 group-hover:bg-accent-blue/15 blur-2xl transition-colors hidden md:block" />
-                  <div className="text-4xl md:text-5xl font-bold text-white/10 md:text-white/8 leading-none mb-4 md:mb-6 group-hover:text-white/12 transition-colors">
-                    {s.n}
-                  </div>
-                  <h3 className="text-base md:text-lg font-bold text-white leading-tight">
-                    {s.title}
-                  </h3>
-                  <p className="mt-2 md:mt-3 text-xs md:text-sm text-white/50 md:text-white/55 leading-relaxed">
-                    {s.body}
-                  </p>
+              <Reveal 
+                key={s.n} 
+                delay={i * 0.08} 
+                className="group bg-white/5 md:bg-ink hover:bg-accent-blue/10 transition-colors p-6 md:p-8 rounded-2xl md:rounded-none border border-white/10 md:border-none relative overflow-hidden flex flex-col justify-start w-full h-full"
+              >
+                <div className="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-accent-blue/0 group-hover:bg-accent-blue/15 blur-2xl transition-colors hidden md:block" />
+                <div className="text-4xl md:text-5xl font-bold text-white/10 md:text-white/8 leading-none mb-4 md:mb-6 group-hover:text-white/12 transition-colors">
+                  {s.n}
                 </div>
+                <h3 className="text-base md:text-lg font-bold text-white leading-tight">
+                  {s.title}
+                </h3>
+                <p className="mt-2 md:mt-3 text-xs md:text-sm text-white/50 md:text-white/55 leading-relaxed">
+                  {s.body}
+                </p>
               </Reveal>
             ))}
           </HScrollCarousel>

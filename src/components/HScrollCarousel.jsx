@@ -45,7 +45,7 @@ export function HScrollCarousel({
           {children.map((child, i) => (
             <div
               key={i}
-              className={`snap-start shrink-0 w-[80vw] max-w-[320px] ${itemClassName}`}
+              className={`snap-start shrink-0 w-[80vw] max-w-[320px] flex flex-col ${itemClassName}`}
             >
               {child}
             </div>

@@ -293,15 +293,17 @@ export default function ProductDetail() {
                 desc: "All structural components are certified under BIFMA standards with IS 513 cold-rolled carbon steel frames."
               }
             ].map((item, idx) => (
-              <Reveal key={item.title} delay={idx * 0.05} className="h-full">
-                <div className="p-6 rounded-2xl border border-border bg-muted/20 hover:border-accent-blue/40 transition-colors h-full flex flex-col justify-between">
-                  <div>
-                    <div className="h-9 w-9 rounded-full bg-accent-blue/10 flex items-center justify-center text-accent-blue mb-4">
-                      <Check className="h-5 w-5 font-bold" />
-                    </div>
-                    <h4 className="text-base font-bold text-ink mb-2">{item.title}</h4>
-                    <p className="text-xs text-steel leading-relaxed">{item.desc}</p>
+              <Reveal 
+                key={item.title} 
+                delay={idx * 0.05} 
+                className="p-6 rounded-2xl border border-border bg-muted/20 hover:border-accent-blue/40 transition-colors flex flex-col justify-between w-full h-full"
+              >
+                <div>
+                  <div className="h-9 w-9 rounded-full bg-accent-blue/10 flex items-center justify-center text-accent-blue mb-4">
+                    <Check className="h-5 w-5 font-bold" />
                   </div>
+                  <h4 className="text-base font-bold text-ink mb-2">{item.title}</h4>
+                  <p className="text-xs text-steel leading-relaxed">{item.desc}</p>
                 </div>
               </Reveal>
             ))}
@@ -330,16 +332,17 @@ export default function ProductDetail() {
               { img: "/badges/ten_year_guarantee.png", title: "10-Year Guarantee", subtitle: "Ironclad Warranty", desc: "Free replacement for any frame bending or rusting." },
               { img: "/badges/make_in_india.png", title: "100% Make In India", subtitle: "Factory-Direct Value", desc: "Proudly manufactured locally in Vasai East." },
             ].map((c) => (
-              <Reveal key={c.title} className="h-full">
-                <div className="bg-white rounded-2xl border border-border p-5 h-full text-center hover:border-accent-blue/40 transition-colors shadow-sm flex flex-col justify-between items-center">
-                  <div>
-                    <div className="inline-flex items-center justify-center mb-4 h-20 w-20 overflow-hidden rounded-full border border-border/40 bg-muted/10">
-                      <img src={c.img} alt={c.title} className="h-full w-full object-contain" />
-                    </div>
-                    <h4 className="text-sm font-bold text-ink leading-tight">{c.title}</h4>
-                    <div className="text-[10px] font-semibold text-accent-blue mt-1 uppercase tracking-wider">{c.subtitle}</div>
-                    <p className="text-xs text-steel mt-2 leading-relaxed">{c.desc}</p>
+              <Reveal 
+                key={c.title} 
+                className="bg-white rounded-2xl border border-border p-5 text-center hover:border-accent-blue/40 transition-colors shadow-sm flex flex-col justify-between items-center w-full h-full"
+              >
+                <div>
+                  <div className="inline-flex items-center justify-center mb-4 h-20 w-20 overflow-hidden rounded-full border border-border/40 bg-muted/10">
+                    <img src={c.img} alt={c.title} className="h-full w-full object-contain" />
                   </div>
+                  <h4 className="text-sm font-bold text-ink leading-tight">{c.title}</h4>
+                  <div className="text-[10px] font-semibold text-accent-blue mt-1 uppercase tracking-wider">{c.subtitle}</div>
+                  <p className="text-xs text-steel mt-2 leading-relaxed">{c.desc}</p>
                 </div>
               </Reveal>
             ))}

@@ -7,6 +7,7 @@ export function Reveal({
   y = 24,
   className = "",
   as = "div",
+  ...props
 }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
@@ -15,7 +16,7 @@ export function Reveal({
 
   if (reduce) {
     const Tag = as;
-    return <Tag ref={ref} className={className}>{children}</Tag>;
+    return <Tag ref={ref} className={className} {...props}>{children}</Tag>;
   }
 
   return (
@@ -25,6 +26,7 @@ export function Reveal({
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] }}
       className={className}
+      {...props}
     >
       {children}
     </MotionTag>
