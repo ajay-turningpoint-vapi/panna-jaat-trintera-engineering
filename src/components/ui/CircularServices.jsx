@@ -133,8 +133,27 @@ export function CircularServices({ services, autoplay = true }) {
   return (
     <div className="w-full max-w-6xl p-4 md:p-8 mx-auto overflow-visible">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center overflow-visible">
-        {/* 3D Circular Cards Stack */}
-        <div className="lg:col-span-5 relative w-full h-[18rem] md:h-[22rem] [perspective:1000px] overflow-visible" ref={cardContainerRef}>
+        {/* Mobile Active Icon (One by one) */}
+        <div className="md:hidden flex justify-center mb-6 mt-4">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeIndex}
+              initial={{ opacity: 0, scale: 0.5, rotate: -10 }}
+              animate={{ opacity: 1, scale: 1, rotate: 0 }}
+              exit={{ opacity: 0, scale: 0.5, rotate: 10 }}
+              transition={{ duration: 0.4, ease: "backOut" }}
+              className="p-8 rounded-[2rem] bg-accent-blue/10 border border-accent-blue/20 shadow-[inset_0_0_20px_rgba(93,130,240,0.15)] flex items-center justify-center"
+            >
+              {React.createElement(activeService.icon, {
+                className: "w-16 h-16 text-accent-blue drop-shadow-[0_0_15px_rgba(93,130,240,0.6)]",
+                strokeWidth: 1.5,
+              })}
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        {/* 3D Circular Cards Stack (Desktop only) */}
+        <div className="hidden md:block lg:col-span-5 relative w-full h-[22rem] [perspective:1000px] overflow-visible" ref={cardContainerRef}>
           {services.map((service, index) => {
             const Icon = service.icon;
             const isActive = index === activeIndex;

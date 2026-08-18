@@ -617,7 +617,7 @@ const steps = [
   {
     n: "03",
     title: "In-House Fabrication",
-    body: "Every piece is cut, bent, welded, powder coated and quality-checked at our Vasai East factory. No outsourcing. No quality shortcuts.",
+    body: "Every piece is cut, bent, welded, powder coated and quality-checked at our Vasai East factory.",
     cta: null,
   },
   {
