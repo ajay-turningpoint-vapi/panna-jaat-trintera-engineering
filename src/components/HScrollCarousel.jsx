@@ -39,13 +39,13 @@ export function HScrollCarousel({
       <div className={`md:hidden ${className}`}>
         <div
           ref={trackRef}
-          className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 -mx-6 px-6 scrollbar-none items-stretch"
+          className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 -mx-6 px-[10vw] scrollbar-none items-stretch"
           style={{ scrollbarWidth: "none", WebkitOverflowScrolling: "touch" }}
         >
           {children.map((child, i) => (
             <div
               key={i}
-              className={`snap-start shrink-0 w-[80vw] max-w-[320px] flex flex-col ${itemClassName}`}
+              className={`snap-center shrink-0 w-[80vw] flex flex-col ${itemClassName}`}
             >
               {child}
             </div>

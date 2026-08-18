@@ -499,7 +499,7 @@ export default function ProductDetail() {
               <Phone className="h-4 w-4" />
             </a>
             <a 
-              href="https://wa.me/917972251822"
+              href={`https://wa.me/917972251822?text=${encodeURIComponent(`Hi Trinetra Engineering, I would like to request a factory quote for the ${product.name}.`)}`}
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center justify-center p-3 rounded-full border border-[#25D366]/30 bg-[#25D366]/10 text-[#25D366] hover:bg-[#25D366]/20 transition-colors"

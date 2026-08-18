@@ -173,13 +173,24 @@ function Nav() {
             ))}
           </nav>
 
-          {/* Desktop CTA */}
-          <a
-            href="#contact"
-            className="hidden md:inline-flex items-center gap-2 rounded-full bg-ink text-white px-4 py-2 text-sm font-semibold hover:bg-accent-blue transition-colors"
-          >
-            Request Quote <ArrowUpRight className="h-4 w-4" />
-          </a>
+          {/* Desktop CTAs */}
+          <div className="hidden md:flex items-center gap-3">
+            <a
+              href="https://wa.me/917972251822?text=Hi%20Trinetra%20Engineering%2C%20I%20would%20like%20to%20inquire%20about%20your%20workstation%20solutions."
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center justify-center h-9 w-9 rounded-full border border-[#25D366]/30 bg-[#25D366]/10 text-[#25D366] hover:bg-[#25D366]/20 transition-colors"
+              aria-label="WhatsApp Us"
+            >
+              <WhatsAppIcon className="h-5 w-5" />
+            </a>
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-2 rounded-full bg-ink text-white px-4 py-2 text-sm font-semibold hover:bg-accent-blue transition-colors"
+            >
+              Request Quote <ArrowUpRight className="h-4 w-4" />
+            </a>
+          </div>
 
           {/* Mobile hamburger */}
           <motion.button
@@ -254,7 +265,7 @@ function Nav() {
                   <Phone className="h-4 w-4" /> Call Us
                 </a>
                 <a
-                  href="https://wa.me/917972251822"
+                  href="https://wa.me/917972251822?text=Hi%20Trinetra%20Engineering%2C%20I%20would%20like%20to%20inquire%20about%20your%20workstation%20solutions."
                   target="_blank"
                   rel="noreferrer"
                   className="flex items-center justify-center gap-2 mt-3 rounded-full border border-green-500/30 bg-green-500/10 text-green-400 px-6 py-3 text-sm font-medium w-full hover:bg-green-500/20 transition-colors"
@@ -690,7 +701,7 @@ function HowWeWork() {
       </div>
 
       {/* Steps */}
-      <div className="bg-ink text-white px-6 pb-16 md:pb-24">
+      <div className="bg-ink text-white px-6 pt-10 md:pt-0 pb-16 md:pb-24">
         <div className="mx-auto max-w-7xl">
           <HScrollCarousel
             desktopClassName="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 rounded-2xl overflow-hidden border border-white/10 -mt-1"
@@ -912,7 +923,7 @@ function Contact() {
             </Reveal>
             <Reveal delay={0.15}>
               <a
-                href="https://wa.me/917972251822"
+                href="https://wa.me/917972251822?text=Hi%20Trinetra%20Engineering%2C%20I%20would%20like%20to%20inquire%20about%20your%20workstation%20solutions."
                 target="_blank"
                 rel="noreferrer"
                 className="flex items-center gap-4 rounded-2xl border border-border bg-white p-5 hover:border-[#25D366] transition-colors group"
