@@ -181,13 +181,14 @@ function Nav() {
           </a>
 
           {/* Mobile hamburger */}
-          <button
+          <motion.button
+            style={{ color: titleColor }}
             onClick={() => setMobileOpen(true)}
-            className="md:hidden flex items-center justify-center h-10 w-10 rounded-lg text-white hover:bg-white/10 transition-colors"
+            className="md:hidden flex items-center justify-center h-10 w-10 rounded-lg hover:bg-black/5 transition-colors"
             aria-label="Open menu"
           >
             <Menu className="h-6 w-6" />
-          </button>
+          </motion.button>
         </div>
       </motion.header>
 
