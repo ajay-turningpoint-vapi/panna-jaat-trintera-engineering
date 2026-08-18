@@ -39,6 +39,7 @@ import { AnimatedGradientText } from "@/components/ui/AnimatedGradientText";
 import DynamicWaves from "@/components/ui/DynamicWaves";
 import { products } from "@/lib/products";
 import { CircularServices } from "@/components/ui/CircularServices";
+import { HScrollCarousel } from "@/components/HScrollCarousel";
 
 const services = [
   {
@@ -681,45 +682,27 @@ function HowWeWork() {
       {/* Steps */}
       <div className="bg-ink text-white px-6 pb-16 md:pb-24">
         <div className="mx-auto max-w-7xl">
-          {/* Mobile: horizontal scroll */}
-          <div className="md:hidden flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 -mx-6 px-6 scrollbar-none -mt-1">
-            {steps.map((s) => (
-              <div
-                key={s.n}
-                className="snap-start shrink-0 w-[72vw] max-w-[280px] rounded-2xl border border-white/10 bg-white/5 p-6"
-              >
-                <div className="text-4xl font-bold text-white/10 leading-none mb-4">
-                  {s.n}
-                </div>
-                <h3 className="text-base font-bold text-white leading-tight">
-                  {s.title}
-                </h3>
-                <p className="mt-2 text-xs text-white/50 leading-relaxed">
-                  {s.body}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          {/* Desktop: grid */}
-          <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 rounded-2xl overflow-hidden border border-white/10 -mt-1">
+          <HScrollCarousel
+            desktopClassName="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 rounded-2xl overflow-hidden border border-white/10 -mt-1"
+            itemClassName="h-full"
+          >
             {steps.map((s, i) => (
-              <Reveal key={s.n} delay={i * 0.08}>
-                <div className="group bg-ink hover:bg-accent-blue/10 transition-colors p-8 h-full relative overflow-hidden">
-                  <div className="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-accent-blue/0 group-hover:bg-accent-blue/15 blur-2xl transition-colors" />
-                  <div className="text-5xl font-bold text-white/8 leading-none mb-6 group-hover:text-white/12 transition-colors">
+              <Reveal key={s.n} delay={i * 0.08} className="h-full">
+                <div className="group bg-white/5 md:bg-ink hover:bg-accent-blue/10 transition-colors p-6 md:p-8 rounded-2xl md:rounded-none border border-white/10 md:border-none relative overflow-hidden h-full flex flex-col">
+                  <div className="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-accent-blue/0 group-hover:bg-accent-blue/15 blur-2xl transition-colors hidden md:block" />
+                  <div className="text-4xl md:text-5xl font-bold text-white/10 md:text-white/8 leading-none mb-4 md:mb-6 group-hover:text-white/12 transition-colors">
                     {s.n}
                   </div>
-                  <h3 className="text-lg font-bold text-white leading-tight">
+                  <h3 className="text-base md:text-lg font-bold text-white leading-tight">
                     {s.title}
                   </h3>
-                  <p className="mt-3 text-sm text-white/55 leading-relaxed">
+                  <p className="mt-2 md:mt-3 text-xs md:text-sm text-white/50 md:text-white/55 leading-relaxed">
                     {s.body}
                   </p>
                 </div>
               </Reveal>
             ))}
-          </div>
+          </HScrollCarousel>
 
           <div className="mt-8 text-center">
             <a
